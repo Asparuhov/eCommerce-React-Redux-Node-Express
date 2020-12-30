@@ -1,134 +1,58 @@
-import React from 'react';
-
-function App() {
+import React, {useState} from "react";
+import './App.css';
+import axios from 'axios';
+export default function App() {
+  const [registerUsername, setRegisterUsername] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [loginUsername, setLoginUsername] = useState('');
+  const [loginPassword, setLoginPassword] = useState(''); 
+  const register = () => {
+    axios({
+      method: 'post',
+      data: {
+        username: registerUsername,
+        password: registerPassword
+      },
+      withCredentials: true,
+      url: 'http://localhost:4002/register'
+    }).then(res => console.log(res)).catch(err => console.log(err));
+  };
+  const login = () => {
+    axios({
+      method: 'post',
+      data: {
+        username: loginUsername,
+        password: loginPassword
+      },
+      withCredentials: true,
+      url: 'http://localhost:4002/login'
+    }).then(res => console.log(res)).catch(err => console.log(err));
+  };
+  const getUser = () => {
+    axios({
+      method: 'get',
+      withCredentials: true,
+      url: 'http://localhost:4002/getUser'
+    }).then(res => console.log(res)).catch(err => console.log(err));
+  };
   return (
-    <div className="grid-container">
-      <header className="row">
-        <div>
-          <a className="brand" href="index.html">amazona</a>
-        </div>
-        <div>
-          <a href="cart.html">Cart</a>
-          <a href="signin.html">Sign In</a>
-        </div>
-      </header>
-      <main>
-        <div>
-          <div className="row center">
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-            <div className="card">
-              <a href="product.html">
-                <img className="medium" src="./images/p1.jpg" alt="product" />
-              </a>
-              <div className="card-body">
-                <a href="product.html">
-                  <h2>Nike Slim Shirts</h2>
-                </a>
-                <div className="rating">
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star"></i> </span>
-                  <span> <i className="fa fa-star-half-o"></i> </span>
-                </div>
-                <div className="price">$120</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-      <footer className="row center">All right reserved</footer>
+    <div className='app'>
+      <div>
+        <h1>Register</h1>
+        <input type="text" palceholder="username" onChange={e => setRegisterUsername(e.target.value)}/>
+        <input type="password" palceholder="password" onChange={e => setRegisterPassword(e.target.value)} />
+        <button onClick={register}>Submit</button>
+      </div>
+      <div>
+        <h1>Login</h1>
+        <input type="text" palceholder="username" onChange={e => setLoginUsername(e.target.value)}/>
+        <input type="password" palceholder="password" onChange={e => setLoginPassword(e.target.value)} />
+        <button onClick={login}>Submit</button>
+      </div>
+      <div>
+        <h1>Get user</h1>
+        <button onClick={getUser}>Get User</button>
+      </div>
     </div>
   );
 }
-
-export default App;
