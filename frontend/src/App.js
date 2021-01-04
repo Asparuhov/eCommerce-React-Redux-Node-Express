@@ -1,57 +1,69 @@
-import React, {useState} from "react";
-import './App.css';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./App.css";
+import axios from "axios";
 export default function App() {
-  const [registerUsername, setRegisterUsername] = useState('');
-  const [registerPassword, setRegisterPassword] = useState('');
-  const [loginUsername, setLoginUsername] = useState('');
-  const [loginPassword, setLoginPassword] = useState(''); 
+  let [usernameRegister, setUsernameRegister] = useState("");
+  let [passwordRegister, setPasswordRegister] = useState("");
+  let [usernameLogin, setUsernameLogin] = useState("");
+  let [passwordLogin, setPasswordLogin] = useState("");
+  let [currentUser, setCurrentUser] = useState();
   const register = () => {
-    axios({
-      method: 'post',
-      data: {
-        username: registerUsername,
-        password: registerPassword
-      },
-      withCredentials: true,
-      url: 'http://localhost:4002/register'
-    }).then(res => console.log(res)).catch(err => console.log(err));
+    axios
+      .post("http://localhost:4000/register", {
+        username: usernameRegister,
+        password: passwordRegister,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   const login = () => {
-    axios({
-      method: 'post',
-      data: {
-        username: loginUsername,
-        password: loginPassword
-      },
-      withCredentials: true,
-      url: 'http://localhost:4002/login'
-    }).then(res => console.log(res)).catch(err => console.log(err));
+    axios
+      .post("http://localhost:4000/login", {
+        username: usernameLogin,
+        password: passwordLogin,
+      })
+      .then((res) => getUser)
+      .catch((err) => console.log(err));
   };
+
   const getUser = () => {
-    axios({
-      method: 'get',
-      withCredentials: true,
-      url: 'http://localhost:4002/getUser'
-    }).then(res => console.log(res)).catch(err => console.log(err));
+    axios
+      .get("http://localhost:4000/login")
+      .then((res) => {
+        setCurrentUser(res.data);
+      })
+      .catch((err) => console.log(err));
   };
   return (
-    <div className='app'>
+    <div className="app">
       <div>
-        <h1>Register</h1>
-        <input type="text" palceholder="username" onChange={e => setRegisterUsername(e.target.value)}/>
-        <input type="password" palceholder="password" onChange={e => setRegisterPassword(e.target.value)} />
-        <button onClick={register}>Submit</button>
+        <div className="register">
+          <input
+            type="text"
+            onChange={(e) => setUsernameRegister(e.target.value)}
+            placeholder="username"
+          />
+          <input
+            type="password"
+            onChange={(e) => setPasswordRegister(e.target.value)}
+            placeholder="password"
+          />
+          <button onClick={register}>Register</button>
+        </div>
       </div>
-      <div>
-        <h1>Login</h1>
-        <input type="text" palceholder="username" onChange={e => setLoginUsername(e.target.value)}/>
-        <input type="password" palceholder="password" onChange={e => setLoginPassword(e.target.value)} />
-        <button onClick={login}>Submit</button>
-      </div>
-      <div>
-        <h1>Get user</h1>
-        <button onClick={getUser}>Get User</button>
+      <div className="login">
+        <input
+          type="text"
+          onChange={(e) => setUsernameLogin(e.target.value)}
+          placeholder="username"
+        />
+        <input
+          type="password"
+          onChange={(e) => setPasswordLogin(e.target.value)}
+          placeholder="password"
+        />
+        <button onClick={login}>Login</button>
+        <p>current user: {currentUser}</p>
       </div>
     </div>
   );
