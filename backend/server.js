@@ -24,16 +24,22 @@ app.post("/register", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-
 app.post("/login", (req, res, next) => {
-    console.log(req.body.password);
-    User.find({username: req.body.username}).then((user) => {
-      console.log(user);
+  User.find({ username: req.body.username })
+    .then((user) => {
+      if (user.length !== 0) {
         if (user[0].password == req.body.password) {
-            res.send(user[0].username);
-        console.log('Authenticated');
-    }else{console.log('Wrong password');}
-    });
+          req.user = user;
+          console.log("Authenticated");
+          res.send(req.user);
+        } else {
+          console.log("Wrong password");
+        }
+      } else {
+        res.send("User not registered!");
+      }
+    })
+    .catch((err) => console.log(err));
 });
 
 mongoose
