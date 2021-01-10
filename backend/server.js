@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const User = require("./user").User;
 const mongoose = require("mongoose");
-app.use(cors("http://localhost:3000"));
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -20,35 +20,36 @@ app.post("/register", async (req, res, next) => {
       password: hashedPass,
       balance: 5000,
     });
-    newUser.save().then(res => console.log('User created'));
+    newUser.save().then((res) => console.log("User created"));
   } catch (error) {
     console.log("Something went wrong");
   }
 });
 
-app.post("/login", async(req, res, next) => {
-  let user = User.find({ username: req.body.username }, (err, docs) => {
-    if (err) {
-      console.log("not found");
-    } else {
-      return docs;
-    }
-  });
-  console.log(user);
-  if (user == null) {
-    res.status(400).send("Cannot find user");
-    console.log("User doesn't exist");
-  }
+app.post("/login", (req, res, next) => {
+  User.find({ username: req.body.username })
+    .then((res) => {
+      req.user = res;
+      next();
+    })
+    .catch((err) => {
+      console.log(err);
+      next();
+    });
+});
+
+app.use(async (req, res, next) => {
+  const user = req.user[0];
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send("Authenticated");
       console.log("Authenticated");
+      res.send(["success", user.username]);
     } else {
-      res.send("Wrong password");
       console.log("Wrong password");
+      res.send(["wrong pass"]);
     }
   } catch (error) {
-    res.send("Something went wrong");
+    res.send(["not registered"]);
   }
 });
 
