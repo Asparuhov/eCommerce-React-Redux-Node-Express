@@ -35,16 +35,12 @@ const Login = (props) => {
     if (loginRes === "wrong pass") {
       display = <p>Wrong password!</p>;
     } else if (loginRes === "not registered") {
-      console.log("not registered");
       display = <p>User doesn't exist</p>;
     }
   }
   if (currentUser !== "") {
     display = <p>{currentUser}</p>;
   }
-  useEffect(() => {
-    console.log(loginRes);
-  }, [loginRes]);
   return (
     <div>
       <div>

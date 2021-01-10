@@ -42,10 +42,8 @@ app.use(async (req, res, next) => {
   const user = req.user[0];
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      console.log("Authenticated");
       res.send(["success", user.username]);
     } else {
-      console.log("Wrong password");
       res.send(["wrong pass"]);
     }
   } catch (error) {
