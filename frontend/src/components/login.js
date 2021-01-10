@@ -14,7 +14,6 @@ const Login = (props) => {
         password: passwordLogin,
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.length === 1) {
           if (res.data[0] === "wrong pass") {
             setLoginRes("wrong pass");
