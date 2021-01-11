@@ -5,11 +5,33 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const User = require("./user").User;
 const mongoose = require("mongoose");
-app.use(cors());
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json({ limit: "10mb" }));
+
+app.use(
+  session({
+    key: "userId",
+    secret: "alisiq",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
 
 app.post("/register", async (req, res, next) => {
   try {
@@ -23,6 +45,12 @@ app.post("/register", async (req, res, next) => {
     newUser.save().then((res) => console.log("User created"));
   } catch (error) {
     console.log("Something went wrong");
+  }
+});
+
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ isLogged: true, user: req.session.user });
   }
 });
 
@@ -42,7 +70,9 @@ app.use(async (req, res, next) => {
   const user = req.user[0];
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
+      req.session.user = user;
       res.send(["success", user.username]);
+      console.log(req.session.user, "session");
     } else {
       res.send(["wrong pass"]);
     }

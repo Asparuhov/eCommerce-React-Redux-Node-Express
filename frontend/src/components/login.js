@@ -7,6 +7,7 @@ const Login = (props) => {
   let [passwordLogin, setPasswordLogin] = useState("");
   let [loginRes, setLoginRes] = useState("");
   let [currentUser, setCurrentUser] = useState("");
+  axios.defaults.withCredentials = true;
   const login = () => {
     axios
       .post("http://localhost:4000/login", {
@@ -20,7 +21,6 @@ const Login = (props) => {
             setCurrentUser("");
           } else if (res.data[0] === "not registered") {
             setLoginRes("not registered");
-            setCurrentUser("");
           }
         }
         if (res.data.length === 2) {
@@ -40,6 +40,18 @@ const Login = (props) => {
   if (currentUser !== "") {
     display = <p>{currentUser}</p>;
   }
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/login")
+      .then((res) => {
+        if (res.data.isLogged === true) {
+          setCurrentUser(res.data.user.username);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <div>
