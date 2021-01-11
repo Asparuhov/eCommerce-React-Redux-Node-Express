@@ -55,12 +55,7 @@ const Login = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const logout = () => {
-    axios
-      .get("http//localhost:4000/login")
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  const logout = () => {};
   return (
     <div>
       <div>
