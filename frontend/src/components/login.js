@@ -7,6 +7,7 @@ const Login = (props) => {
   let [passwordLogin, setPasswordLogin] = useState("");
   let [loginRes, setLoginRes] = useState("");
   let [currentUser, setCurrentUser] = useState("");
+  let [isAuth, setIsAuth] = useState(false);
   axios.defaults.withCredentials = true;
   const login = () => {
     axios
@@ -45,13 +46,21 @@ const Login = (props) => {
     axios
       .get("http://localhost:4000/login")
       .then((res) => {
+        console.log(res);
         if (res.data.isLogged === true) {
           setCurrentUser(res.data.user.username);
+          setIsAuth(true);
         }
       })
       .catch((err) => console.log(err));
   }, []);
 
+  const logout = () => {
+    axios
+      .get("http//localhost:4000/login")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <div>
@@ -67,7 +76,11 @@ const Login = (props) => {
             onChange={(e) => setPasswordLogin(e.target.value)}
             placeholder="password"
           />
-          <button onClick={login}>Login</button>
+          {!isAuth ? (
+            <button onClick={login}>Login</button>
+          ) : (
+            <button onClick={logout}>Logout</button>
+          )}
           {display}
         </div>
       </div>

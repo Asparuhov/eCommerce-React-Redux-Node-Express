@@ -50,7 +50,7 @@ app.post("/register", async (req, res, next) => {
 
 app.get("/login", (req, res) => {
   if (req.session.user) {
-    res.send({ isLogged: true, user: req.session.user });
+    res.send({ isLogged: true, user: req.session.user, session: req.session });
   }
 });
 
