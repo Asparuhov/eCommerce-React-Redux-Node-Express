@@ -9,26 +9,37 @@ const Login = (props) => {
   let [currentUser, setCurrentUser] = useState("");
   let [isAuth, setIsAuth] = useState(false);
   axios.defaults.withCredentials = true;
-  const login = () => {
-    axios
-      .post("http://localhost:4000/login", {
-        username: usernameLogin,
-        password: passwordLogin,
-      })
-      .then((res) => {
-        if (res.data.length === 1) {
-          if (res.data[0] === "wrong pass") {
-            setLoginRes("wrong pass");
-            setCurrentUser("");
-          } else if (res.data[0] === "not registered") {
-            setLoginRes("not registered");
+  const login = (type) => {
+    if (type === "login") {
+      axios
+        .post("http://localhost:4000/login", {
+          type: "login",
+          username: usernameLogin,
+          password: passwordLogin,
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            if (res.data[0] === "wrong pass") {
+              setLoginRes("wrong pass");
+              setCurrentUser("");
+            } else if (res.data[0] === "not registered") {
+              setLoginRes("not registered");
+            }
           }
-        }
-        if (res.data.length === 2) {
-          setCurrentUser(res.data[1]);
-        }
-      })
-      .catch((err) => console.log(err));
+          if (res.data.length === 2) {
+            setCurrentUser(res.data[1]);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+    if (type === "logout") {
+      axios
+        .post("http://localhost:4000/login", { type: "logout" })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    }
   };
   let display;
   if (loginRes !== "") {
@@ -55,7 +66,6 @@ const Login = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const logout = () => {};
   return (
     <div>
       <div>
@@ -72,9 +82,9 @@ const Login = (props) => {
             placeholder="password"
           />
           {!isAuth ? (
-            <button onClick={login}>Login</button>
+            <button onClick={login("login")}>Login</button>
           ) : (
-            <button onClick={logout}>Logout</button>
+            <button onClick={login("logout")}>Logout</button>
           )}
           {display}
         </div>

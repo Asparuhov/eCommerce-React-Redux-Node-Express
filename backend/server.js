@@ -55,15 +55,20 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res, next) => {
-  User.find({ username: req.body.username })
-    .then((res) => {
-      req.user = res;
-      next();
-    })
-    .catch((err) => {
-      console.log(err);
-      next();
-    });
+  if (req.body.type === "login") {
+    User.find({ username: req.body.username })
+      .then((res) => {
+        req.user = res;
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+  if (req.body.type === "logout") {
+    req.session.destroy();
+  }
 });
 
 app.use(async (req, res, next) => {
