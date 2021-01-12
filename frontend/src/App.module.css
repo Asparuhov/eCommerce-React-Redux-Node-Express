@@ -1,43 +1,27 @@
-.App {
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(216, 139, 24, 0.7);
-    height: 60px;
-  }
-.App nav {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0.5rem;
-    flex-flow: row;
-    box-sizing: border-box;
-  }
-  .App ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  .App li {
-    padding: 0 1rem;
-  }
+.topnav {
+  overflow: hidden;
+  background-color:#ff9933;
+}
 
-  .App .Link {
-    text-decoration: none;
-    font-size: 30px;
-    margin: 40px auto;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: bold;
-    color: #121212;
-    text-align: center;
-    letter-spacing: 5px;
-    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-      0px -4px 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  .App .Link:hover,
-  .App .Link:active {
-    color: rgb(218, 157, 28);
-    background-color: rgb(98, 235, 19, 0, 7);
-  }
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.topnav a:hover {
+  background-color: #cc6600;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #cc6600;
+  color: white;
+}
+
+.topnavRight {
+  float: right;
+}
