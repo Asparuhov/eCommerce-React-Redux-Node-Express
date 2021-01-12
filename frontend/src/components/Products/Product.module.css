@@ -1,6 +1,6 @@
 .product {
   width: 300px;
-  height: 450px;
+  height: 400px;
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -12,5 +12,4 @@
 .product .image {
   width: 200px;
   height: 300px;
-  position:absolute;
 }
