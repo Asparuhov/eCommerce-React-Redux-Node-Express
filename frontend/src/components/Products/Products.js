@@ -2,7 +2,8 @@ import classes from "./Products.module.css";
 import React from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.png";
-export default function Products() {
+import { connect } from "react-redux";
+const Products = (props) => {
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -12,32 +13,20 @@ export default function Products() {
         </header>
       </div>
       <div className={classes.Products}>
-        <Product
-          source="http://images.amazon.com/images/P/0596004613.01._PE30_PI_SCMZZZZZZZ_.jpg"
-          info="This book is awesome!"
-          added={() => alert("added to cart")}
-        />
-        <Product
-          source="http://images.amazon.com/images/P/0596004613.01._PE30_PI_SCMZZZZZZZ_.jpg"
-          info="This book is awesome!"
-          added={() => alert("added to cart")}
-        />
-        <Product
-          source="http://images.amazon.com/images/P/0596004613.01._PE30_PI_SCMZZZZZZZ_.jpg"
-          info="This book is awesome!"
-          added={() => alert("added to cart")}
-        />
-        <Product
-          source="http://images.amazon.com/images/P/0596004613.01._PE30_PI_SCMZZZZZZZ_.jpg"
-          info="This book is awesome!"
-          added={() => alert("added to cart")}
-        />
-        <Product
-          source="http://images.amazon.com/images/P/0596004613.01._PE30_PI_SCMZZZZZZZ_.jpg"
-          info="This book is awesome!"
-          added={() => alert("added to cart")}
-        />
+        {props.items.map((item) => {
+          return (
+            <Product source={item.img} info={item.info} price={item.price} />
+          );
+        })}
       </div>
     </>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
+
+export default connect(mapStateToProps)(Products);

@@ -6,6 +6,7 @@ export default function Product(props) {
     <div className={classes.product}>
       <img className={classes.image} src={props.source} alt="default" />
       <p className={classes.info}>{props.info}</p>
+      <p className={classes.info}>{props.price}</p>
       <button className={classes.button} onClick={props.added}>
         Add to cart
       </button>

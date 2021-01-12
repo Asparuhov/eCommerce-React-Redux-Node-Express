@@ -1,6 +1,6 @@
 .form {
   width: 400px;
-  height:500px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,10 +11,11 @@
 }
 
 .form input {
-    font-size: 25px;
-    
+  font-size: 25px;
+  margin-top: 50px;
 }
 
-.form .button{
-    font-size: 30px;
+.form .button {
+  font-size: 30px;
+  margin-top: 50px;
 }
