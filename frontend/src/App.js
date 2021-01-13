@@ -13,14 +13,16 @@ const App = (props) => {
             <Link to="/">Home</Link>
             <Link to="/trending">Trending</Link>
             <div className={classes.dropdown}>
-              <button className={classes.dropbtn}>
-                Dropdown
-              </button>
+              <button className={classes.dropbtn}>Dropdown</button>
               <div className={classes.dropdownContent}>
-                <Link to="#">Clothes</Link>
-                <Link href="#">Link 2</Link>
-                <Link href="#">Link 3</Link>
+                <Link to="/products/clothes">Clothes</Link>
+                <Link to="/products/shoes">Shoes</Link>
+                <Link to="/products/hats">Hats</Link>
               </div>
+            </div>
+            <div className={classes.rightNav}>
+              <Link to="/account">Account</Link>
+              <Link to="/cart">Cart</Link>
             </div>
           </div>
         </header>
@@ -30,6 +32,9 @@ const App = (props) => {
         <Route path="/account" exact render={() => <h1>Account</h1>} />
         <Route path="/cart" exact render={() => <h1>Cart</h1>} />
         <Route path="/add" exact component={AddItem} />
+        <Route path="/products/clothes" exact render={() => <h1>cloth</h1>} />
+        <Route path="/products/shoes" exact render={() => <h1>shoes</h1>} />
+        <Route path="/products/hats" exact render={() => <h1>hats</h1>} />
       </div>
     </BrowserRouter>
   );
