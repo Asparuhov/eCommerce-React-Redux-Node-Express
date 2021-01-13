@@ -9,14 +9,18 @@ const App = (props) => {
     <BrowserRouter>
       <div className={classes.App}>
         <header>
-          <div className={classes.topnav}>
+          <div className={classes.navbar}>
             <Link to="/">Home</Link>
-            <Link to="/categories">Categories</Link>
             <Link to="/trending">Trending</Link>
-            <Link to="/add">Add Item</Link>
-            <div className={classes.topnavRight}>
-              <Link to="/account">Account</Link>
-              <Link to="/cart">Cart</Link>
+            <div className={classes.dropdown}>
+              <button className={classes.dropbtn}>
+                Dropdown
+              </button>
+              <div className={classes.dropdownContent}>
+                <Link to="#">Clothes</Link>
+                <Link href="#">Link 2</Link>
+                <Link href="#">Link 3</Link>
+              </div>
             </div>
           </div>
         </header>
