@@ -49,10 +49,12 @@ const App = (props) => {
           {props.loggedIn ? <Products /> : <Redirect to="/login" />}
         </Route>
         <Route path="/categories" exact render={() => <h1>Categories</h1>} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/login" exact component={Login}>
+          {" "}
+          {props.loggedIn === false ? <Login /> : <Redirect to="/" />}
+        </Route>
         <Route path="/register" exact component={Register} />
         <Route path="/account" exact>
-          {" "}
           {props.loggedIn ? <Account /> : <Redirect to="/login" />}
         </Route>
         <Route path="/cart" exact render={() => <h1>Cart</h1>} />

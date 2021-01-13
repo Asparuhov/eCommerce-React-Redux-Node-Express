@@ -73,7 +73,12 @@ function authenticateToken(req, res, next) {
   }
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) throw err;
-    req.user = user;
+    console.log(user);
+    req.user = {
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+    };
     next();
   });
 }
