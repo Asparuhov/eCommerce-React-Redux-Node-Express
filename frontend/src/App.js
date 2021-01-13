@@ -3,7 +3,9 @@ import classes from "./App.module.css";
 import { Link, Route } from "react-router-dom";
 import Products from "./components/Products/Products";
 import { BrowserRouter } from "react-router-dom";
+import Login from "./containers/Login/Login";
 import AddItem from "./components/AddItem/AddItem";
+import Register from "./containers/Register/Register";
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -11,7 +13,6 @@ const App = (props) => {
         <header>
           <div className={classes.navbar}>
             <Link to="/">Home</Link>
-            <Link to="/trending">Trending</Link>
             <div className={classes.dropdown}>
               <button className={classes.dropbtn}>Dropdown</button>
               <div className={classes.dropdownContent}>
@@ -20,6 +21,7 @@ const App = (props) => {
                 <Link to="/products/hats">Hats</Link>
               </div>
             </div>
+            <Link to="/login">Login</Link>
             <div className={classes.rightNav}>
               <Link to="/account">Account</Link>
               <Link to="/cart">Cart</Link>
@@ -28,7 +30,8 @@ const App = (props) => {
         </header>
         <Route path="/" exact component={Products} />
         <Route path="/categories" exact render={() => <h1>Categories</h1>} />
-        <Route path="/trending" exact render={() => <h1>trending</h1>} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact component={Register} />
         <Route path="/account" exact render={() => <h1>Account</h1>} />
         <Route path="/cart" exact render={() => <h1>Cart</h1>} />
         <Route path="/add" exact component={AddItem} />
