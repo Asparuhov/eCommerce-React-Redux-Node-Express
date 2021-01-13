@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import classes from "./App.module.css";
-import { Link, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route, Redirect } from "react-router-dom";
 import Products from "./components/Products/Products";
-import { BrowserRouter } from "react-router-dom";
+
 import Login from "./containers/Login/Login";
 import AddItem from "./components/AddItem/AddItem";
 import Register from "./containers/Register/Register";
 import axios from "axios";
 import { connect } from "react-redux";
+import Account from "./components/Account/Account";
 const App = (props) => {
   useEffect(() => {
     axios
@@ -31,18 +32,29 @@ const App = (props) => {
                 <Link to="/products/hats">Hats</Link>
               </div>
             </div>
-            <Link to="/login">Login</Link>
-            <div className={classes.rightNav}>
-              <Link to="/account">Account</Link>
-              <Link to="/cart">Cart</Link>
-            </div>
+
+            {props.currentUser.username ? (
+              <Link style={{ float: "right" }} to="/account">
+                Account
+              </Link>
+            ) : (
+              <Link style={{ float: "right" }} to="/login">
+                Login
+              </Link>
+            )}
           </div>
         </header>
-        <Route path="/" exact component={Products} />
+
+        <Route exact path="/">
+          {props.loggedIn ? <Products /> : <Redirect to="/login" />}
+        </Route>
         <Route path="/categories" exact render={() => <h1>Categories</h1>} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
-        <Route path="/account" exact render={() => <h1>Account</h1>} />
+        <Route path="/account" exact>
+          {" "}
+          {props.loggedIn ? <Account /> : <Redirect to="/login" />}
+        </Route>
         <Route path="/cart" exact render={() => <h1>Cart</h1>} />
         <Route path="/add" exact component={AddItem} />
         <Route path="/products/clothes" exact render={() => <h1>cloth</h1>} />
@@ -56,6 +68,7 @@ const App = (props) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
+    loggedIn: state.loggedIn,
   };
 };
 const toActions = (dispatch) => {

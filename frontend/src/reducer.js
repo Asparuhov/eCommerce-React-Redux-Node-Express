@@ -1,5 +1,6 @@
 let initialState = {
   currentUser: {},
+  loggedIn: false,
   items: [],
 };
 
@@ -13,6 +14,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.user,
+        loggedIn: true
       };
     default:
       return state;
