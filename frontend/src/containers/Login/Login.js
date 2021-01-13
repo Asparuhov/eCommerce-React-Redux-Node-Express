@@ -10,8 +10,8 @@ const Login = (props) => {
 
   const login = () => {
     axios
-      .post("http://localhost:4000/login", user)
-      .then((res) => console.log(res))
+      .post("login", user)
+      .then((res) => {localStorage.setItem('token', res.data.accessToken)})
       .catch((err) => console.log(err));
   };
   return (

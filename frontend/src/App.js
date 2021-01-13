@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./App.module.css";
 import { Link, Route } from "react-router-dom";
 import Products from "./components/Products/Products";
@@ -6,7 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import AddItem from "./components/AddItem/AddItem";
 import Register from "./containers/Register/Register";
+import axios from "axios";
+import { connect } from "react-redux";
 const App = (props) => {
+  useEffect(() => {
+    axios
+      .get("user")
+      .then((res) => {
+        props.setCurrentUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <BrowserRouter>
       <div className={classes.App}>
@@ -43,4 +53,14 @@ const App = (props) => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser,
+  };
+};
+const toActions = (dispatch) => {
+  return {
+    setCurrentUser: (user) => dispatch({ type: "SETCURRENTUSER", user: user }),
+  };
+};
+export default connect(mapStateToProps, toActions)(App);
