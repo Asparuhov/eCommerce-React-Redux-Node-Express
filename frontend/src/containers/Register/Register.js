@@ -12,7 +12,7 @@ const Register = (props) => {
   const register = () => {
     axios
       .post("http://localhost:4000/register", user)
-      .then("User sent to backend")
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
   return (
