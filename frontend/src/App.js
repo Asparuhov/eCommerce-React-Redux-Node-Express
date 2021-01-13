@@ -34,9 +34,14 @@ const App = (props) => {
             </div>
 
             {props.currentUser.username ? (
-              <Link style={{ float: "right" }} to="/account">
-                Account
-              </Link>
+              <>
+                <Link style={{ float: "right" }} to="/account">
+                  Account
+                </Link>
+                <Link style={{ float: "right" }} to="/cart">
+                  Cart
+                </Link>
+              </>
             ) : (
               <Link style={{ float: "right" }} to="/login">
                 Login
