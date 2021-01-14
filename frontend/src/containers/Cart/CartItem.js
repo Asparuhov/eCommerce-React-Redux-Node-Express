@@ -4,8 +4,13 @@ export default function CartItem(props) {
     return (
         <div className={classes.CartItem}>
             <img src={props.image} alt='error' />
-            <p>About: {props.info}</p>
-            <p>count:{props.count}</p>
+            <div className={classes.about}>
+                <p>{props.info}</p>
+                <p style={{color: 'green'}}>In Stock</p>
+             </div>
+            <div className={classes.count}>
+                <button>-</button> <p>{props.count} </p><button>+</button>
+            </div>
             <p>total price: ${props.totalPrice}</p>
         </div>
     )
