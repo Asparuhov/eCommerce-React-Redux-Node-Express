@@ -17,22 +17,18 @@
   height: 90px;
   width: 90px;
   left: 5px;
-  position:absolute;
+  position: absolute;
 }
 
-
-
-
-.CartItem .about{
-    position:absolute;
-    left: 110px;
-    width:300px;
-
+.CartItem .about {
+  position: absolute;
+  left: 110px;
+  width: 300px;
 }
 .count {
   display: flex;
   flex-direction: row;
-  position:absolute;
+  position: absolute;
   left: 70%;
 }
 .count button {
@@ -48,10 +44,43 @@
   margin-left: 3px;
 }
 
-.price  {
-  display:flex;
+.price {
+  display: flex;
   text-align: center;
   flex-direction: column;
-  position:absolute;
+  position: absolute;
   left: 85%;
+}
+
+.x {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(
+      -45deg,
+      transparent 0%,
+      transparent 46%,
+      white 46%,
+      white 56%,
+      transparent 56%,
+      transparent 100%
+    ),
+    -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, white 46%, white
+          56%, transparent 56%, transparent 100%);
+  background-color: red;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  top: 4%;
+  right: 1%;
+  transition: all 0.2s ease-in-out;
+}
+.x:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }

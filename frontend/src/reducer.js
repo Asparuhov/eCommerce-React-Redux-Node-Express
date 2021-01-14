@@ -27,18 +27,33 @@ const reducer = (state = initialState, action) => {
     case "ADDTOCART":
       return {
         ...state,
-        currentCart: state.currentCart.concat(action.payload.info),
+        currentCart: state.currentCart.concat(action.obj),
       };
     case "INCREASECOUNT":
       const index = state.currentCart.findIndex((x) => x.id === action.id);
-      console.log(state.currentCart[index]);
-      return {
-        ...state,
-        currentCart: [
-          ...state.currentCart,
-          (state.currentCart[index].count += 1),
-        ],
-      };
+      const count = state.currentCart[index].count;
+      if (action.incdec === "increment") {
+        return {
+          ...state,
+          currentCart: [
+            ...state.currentCart,
+            (state.currentCart[index].count += 1),
+            (state.currentCart[index].totalPrice =
+              state.currentCart[index].price * state.currentCart[index].count),
+          ],
+        };
+      }
+      if (action.incdec === "decrement" && count > 1) {
+        return {
+          ...state,
+          currentCart: [
+            ...state.currentCart,
+            (state.currentCart[index].count -= 1),
+            (state.currentCart[index].totalPrice =
+              state.currentCart[index].price * state.currentCart[index].count),
+          ],
+        };
+      }
     default:
       return state;
   }

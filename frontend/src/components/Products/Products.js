@@ -19,7 +19,6 @@ const Products = (props) => {
       .get("https://fakestoreapi.com/products/")
       .then(function (response) {
         props.setProducts(response.data);
-        console.log(response);
         setLoading(false);
       })
       .catch(function (error) {
@@ -33,7 +32,6 @@ const Products = (props) => {
       .get("https://fakestoreapi.com/products/" + type)
       .then(function (response) {
         props.setProducts(response.data);
-        console.log(response);
       })
       .catch(function (error) {
         console.error(error);
@@ -78,10 +76,10 @@ const Products = (props) => {
                       price: item.price,
                       image: item.image,
                       count: 1,
+                      totalPrice: item.price,
                     });
                   }
                   const index = props.cart.findIndex((x) => x.id === item.id);
-                  console.log(index);
                   if (index === -1 && props.cart.length > 0) {
                     props.addToCart({
                       info: item.title,
@@ -89,6 +87,7 @@ const Products = (props) => {
                       price: item.price,
                       image: item.image,
                       count: 1,
+                      totalPrice: item.price,
                     });
                   } else if (index >= 0) {
                     props.increaseCount(item.id);
@@ -115,12 +114,12 @@ const toActions = (dispatch) => {
   return {
     setProducts: (products) =>
       dispatch({ type: "SETPRODUCTS", products: products }),
-    addToCart: (info, id, price, image) =>
+    addToCart: (obj) =>
       dispatch({
         type: "ADDTOCART",
-        payload: { info: info, id: id, price: price, image: image },
+        obj,
       }),
-    increaseCount: (id) => dispatch({ type: "INCREASECOUNT", id: id }),
+    increaseCount: (id) => dispatch({ type: "INCREASECOUNT", id: id , incdec: 'increment'}),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);
