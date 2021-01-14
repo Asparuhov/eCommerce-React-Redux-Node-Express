@@ -24,15 +24,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         products: action.products,
       };
-    case "SETCART":
-      return {
-        ...state,
-        currentCart: state.currentCart.concat(action.cart),
-      };
     case "ADDTOCART":
       return {
         ...state,
-        currentCart: state.currentCart.concat(action.cart),
+        currentCart: state.currentCart.concat(action.payload.info),
+      };
+    case "INCREASECOUNT":
+      const index = state.currentCart.findIndex((x) => x.id === action.id);
+      console.log(state.currentCart[index]);
+      return {
+        ...state,
+        currentCart: [
+          ...state.currentCart,
+          (state.currentCart[index].count += 1),
+        ],
       };
     default:
       return state;
@@ -41,7 +46,7 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-export const saveToDB = () => async (dispatch, getState) => {
+/* export const saveToDB = () => async (dispatch, getState) => {
   const cart = getState.cart;
   const currentUser = getState.currentUser;
   await axios
@@ -60,3 +65,4 @@ export const loadToStore = () => async (dispatch, getState) => {
     .catch((err) => console.log(err));
   dispatch({ type: "SETCART", cart: cart });
 };
+ */

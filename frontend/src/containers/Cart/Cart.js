@@ -6,14 +6,17 @@ const Cart = (props) => {
     <div>
       {props.cart ? (
         props.cart.map((item) => {
-          return (
-            <CartItem
-              info={item.info.info}
-              count="10"
-              totalPrice={item.info.price}
-              image={item.info.image}
-            />
-          );
+          console.log(typeof item);
+          if (typeof item !== "number") {
+            return (
+              <CartItem
+                info={item.info}
+                count={item.count}
+                totalPrice={item.price}
+                image={item.image}
+              />
+            );
+          }
         })
       ) : (
         <h1 style={{ margin: "0 auto", marginTop: "30px" }}>

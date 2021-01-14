@@ -70,13 +70,30 @@ const Products = (props) => {
                 info={item.title}
                 price={item.price}
                 key={item.id}
-                added={() =>
-                  props.addToCart({
-                    info: item.title,
-                    price: item.price,
-                    image: item.image,
-                  })
-                }
+                added={() => {
+                  if (props.cart.length === 0) {
+                    props.addToCart({
+                      info: item.title,
+                      id: item.id,
+                      price: item.price,
+                      image: item.image,
+                      count: 1,
+                    });
+                  }
+                  const index = props.cart.findIndex((x) => x.id === item.id);
+                  console.log(index);
+                  if (index === -1 && props.cart.length > 0) {
+                    props.addToCart({
+                      info: item.title,
+                      id: item.id,
+                      price: item.price,
+                      image: item.image,
+                      count: 1,
+                    });
+                  } else if (index >= 0) {
+                    props.increaseCount(item.id);
+                  }
+                }}
               />
             );
           })
@@ -91,17 +108,19 @@ const Products = (props) => {
 const mapStateToProps = (state) => {
   return {
     products: state.products,
+    cart: state.currentCart,
   };
 };
 const toActions = (dispatch) => {
   return {
     setProducts: (products) =>
       dispatch({ type: "SETPRODUCTS", products: products }),
-    addToCart: (info, price, image) =>
+    addToCart: (info, id, price, image) =>
       dispatch({
         type: "ADDTOCART",
-        cart: { info: info, price: price, image: image },
+        payload: { info: info, id: id, price: price, image: image },
       }),
+    increaseCount: (id) => dispatch({ type: "INCREASECOUNT", id: id }),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);
