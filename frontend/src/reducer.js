@@ -54,6 +54,13 @@ const reducer = (state = initialState, action) => {
           ],
         };
       }
+    case "REMOVEITEM":
+      console.log("trying to remove");
+      const indx = state.currentCart.findIndex((x) => x.id === action.id);
+      return {
+        ...state,
+        currentCart: state.currentCart.filter((_, index) => index !== indx),
+      };
     default:
       return state;
   }
