@@ -4,15 +4,32 @@ import Product from "./Product";
 import image from "../../assets/shoes.png";
 import { connect } from "react-redux";
 import axios from "axios";
+import Spinner from "../Spinner/Spinner";
 //categories:
 //electronics,
 //men clothing,
 //women clothing,
 //jewelery
 const Products = (props) => {
+  let [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     axios
-      .get("https://fakestoreapi.com/products/category/women clothing")
+      .get("https://fakestoreapi.com/products/")
+      .then(function (response) {
+        props.setProducts(response.data);
+        console.log(response);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
+  const getProduct = (type) => {
+    props.setProducts(null);
+    axios
+      .get("https://fakestoreapi.com/products/" + type)
       .then(function (response) {
         props.setProducts(response.data);
         console.log(response);
@@ -20,7 +37,7 @@ const Products = (props) => {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  };
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -32,23 +49,36 @@ const Products = (props) => {
         </header>
       </div>
       <div className={classes.filterOptions}>
-        <button>All</button>
-        <button>Electronics</button>
-        <button>Men</button>
-        <button>Women</button>
-        <button>Jewelery</button>
+        <button onClick={() => getProduct("")}>All</button>
+        <button onClick={() => getProduct("/category/electronics")}>
+          Electronics
+        </button>
+        <button onClick={() => getProduct("/category/men clothing")}>
+          Men
+        </button>
+        <button onClick={() => getProduct("/category/women clothing")}>
+          Women
+        </button>
+        <button onClick={() => getProduct("/category/jewelery")}>
+          Jewelery
+        </button>
       </div>
       <div className={classes.Products}>
-        {props.products.map((item) => {
-          return (
-            <Product
-              source={item.image}
-              info={item.title}
-              price={item.price}
-              key={item.id}
-            />
-          );
-        })}
+        {loading ? <Spinner /> : null}
+        {props.products ? (
+          props.products.map((item) => {
+            return (
+              <Product
+                source={item.image}
+                info={item.title}
+                price={item.price}
+                key={item.id}
+              />
+            );
+          })
+        ) : (
+          <Spinner />
+        )}
       </div>
     </>
   );
