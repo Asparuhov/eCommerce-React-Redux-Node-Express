@@ -6,9 +6,10 @@ const Account = (props) => {
  
   return (
     <div className={classes.Account}>
-      <p>Id: {props.user._id}</p>
+      <h1>Account info</h1>
+      <p>ID: {props.user._id}</p>
       <p>Email: {props.user.email}</p>
-      <p>username: {props.user.username}</p>
+      <p>Username: {props.user.username}</p>
       <button
         onClick={() => {
           localStorage.clear();

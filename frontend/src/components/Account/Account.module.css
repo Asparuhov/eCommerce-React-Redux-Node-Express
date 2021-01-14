@@ -1,3 +1,26 @@
-.Account{
-    margin: 0 auto;
+.Account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid orange;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.Account button{
+    font-size:20px;
+    width: 100px;
+    height: 25px;
+    background-color: orange;
+    border-radius: 3px;
+    border:none;
+}
+
+.Account button:hover{
+    width:110px;
+    background-color: rgb(190, 126, 5);
+    border-radius: 5px;
 }
