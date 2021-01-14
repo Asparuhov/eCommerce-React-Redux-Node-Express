@@ -15,8 +15,8 @@ const Cart = (props) => {
                 image={item.image}
                 key={item.id}
                 increment={() => props.increaseCount(item.id, "increment")}
-                decrement={() => props.increaseCount(item.id, "decrement")}
-                remove={() => props.removeItem(item.id)}
+                    decrement={() => props.increaseCount(item.id, "decrement")}
+                    remove={() => props.removeItem(item.id)}
               />
             );
           }
@@ -36,10 +36,10 @@ const mapStateToProps = (state) => {
   };
 };
 const toActions = (dispatch) => {
-  return {
-    increaseCount: (id, IncDec) =>
-      dispatch({ type: "INCREASECOUNT", id: id, incdec: IncDec }),
-    removeItem: (id) => dispatch({ type: "REMOVEITEM", id: id }),
-  };
+    return {
+        increaseCount: (id, IncDec) =>
+            dispatch({type: "INCREASECOUNT", id: id, incdec: IncDec}),
+        removeItem: (id) => dispatch({type:'REMOVEITEM', id: id})
+    };
 };
 export default connect(mapStateToProps, toActions)(Cart);
