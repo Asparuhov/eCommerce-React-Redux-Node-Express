@@ -20,7 +20,7 @@ const Products = (props) => {
       <div style={{ position: "relative" }}>
         <header>
           <img src={image} alt="default" className={classes.mainImage} />
-          <p className={classes.Quote}>We have the best shoes on the market</p>
+          <p className={classes.Quote}>We have the best products on the market</p>
         </header>
       </div>
       <div className={classes.Products}>
@@ -30,7 +30,7 @@ const Products = (props) => {
               source={item.image}
               info={item.title}
               price={item.price}
-              key={item.id}
+              key={item}
             />
           );
         })}
