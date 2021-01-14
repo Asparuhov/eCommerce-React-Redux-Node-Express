@@ -9,6 +9,7 @@ import Register from "./containers/Register/Register";
 import axios from "axios";
 import { connect } from "react-redux";
 import Account from "./components/Account/Account";
+
 const App = (props) => {
   useEffect(() => {
     axios

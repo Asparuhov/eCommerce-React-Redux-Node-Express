@@ -1,15 +1,16 @@
 .product {
   width: 300px;
   height: 400px;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 125, 3);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 50px;
 }
 
 .product .image {
-  width: 200px;
-  height: 300px;
+  width: 150px;
+  height: 250px;
 }

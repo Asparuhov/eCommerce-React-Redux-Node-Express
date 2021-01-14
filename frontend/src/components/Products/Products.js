@@ -1,9 +1,22 @@
 import classes from "./Products.module.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.png";
 import { connect } from "react-redux";
+import axios from "axios";
 const Products = (props) => {
+  let [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products/")
+      .then(function (response) {
+        setProducts(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  });
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -13,9 +26,13 @@ const Products = (props) => {
         </header>
       </div>
       <div className={classes.Products}>
-        {props.items.map((item) => {
+        {products.map((item) => {
           return (
-            <Product source={item.img} info={item.info} price={item.price} />
+            <Product
+              source={item.image}
+              info={item.title}
+              price={item.price}
+            />
           );
         })}
       </div>
