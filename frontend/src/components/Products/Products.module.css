@@ -1,8 +1,10 @@
 .Products {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   margin-top: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .mainImage {
