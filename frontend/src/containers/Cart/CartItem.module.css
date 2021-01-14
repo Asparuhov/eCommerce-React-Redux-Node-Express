@@ -1,0 +1,21 @@
+.CartItem{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: row;
+    width:600px;
+    height:100px;
+    margin: 0 auto;
+    border: 1px solid orangered;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.CartItem img{
+    height: 90px;
+    width: 90px;
+}
+
+.CartItem p{
+    margin-left: 20px;
+}

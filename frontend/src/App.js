@@ -9,6 +9,7 @@ import Register from "./containers/Register/Register";
 import axios from "axios";
 import { connect } from "react-redux";
 import Account from "./components/Account/Account";
+import Cart from "./containers/Cart/Cart";
 
 const App = (props) => {
   useEffect(() => {
@@ -54,7 +55,7 @@ const App = (props) => {
         <Route path="/account" exact>
           {props.loggedIn ? <Account /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/cart" exact render={() => <h1>Cart</h1>} />
+        <Route path="/cart" exact component={Cart} />
       </div>
     </BrowserRouter>
   );

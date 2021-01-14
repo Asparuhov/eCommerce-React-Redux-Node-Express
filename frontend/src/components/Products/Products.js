@@ -5,6 +5,7 @@ import image from "../../assets/shoes.jpg";
 import { connect } from "react-redux";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
+import { saveToDB } from "../../reducer";
 //categories:
 //electronics,
 //men clothing,
@@ -61,7 +62,6 @@ const Products = (props) => {
         </button>
       </div>
       <div className={classes.Products}>
-        {loading ? <Spinner /> : null}
         {props.products ? (
           props.products.map((item) => {
             return (
@@ -70,6 +70,13 @@ const Products = (props) => {
                 info={item.title}
                 price={item.price}
                 key={item.id}
+                added={() =>
+                  props.addToCart({
+                    info: item.title,
+                    price: item.price,
+                    image: item.image,
+                  })
+                }
               />
             );
           })
@@ -90,6 +97,11 @@ const toActions = (dispatch) => {
   return {
     setProducts: (products) =>
       dispatch({ type: "SETPRODUCTS", products: products }),
+    addToCart: (info, price, image) =>
+      dispatch({
+        type: "ADDTOCART",
+        cart: { info: info, price: price, image: image },
+      }),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);

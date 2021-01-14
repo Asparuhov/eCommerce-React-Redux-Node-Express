@@ -30,6 +30,7 @@ app.post("/register", async (req, res) => {
         username: username,
         email: email,
         password: hashedPass,
+        cart: [],
       });
       newUser
         .save()
@@ -82,6 +83,10 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
+
+app.post('cart', (req, res) => {
+  console.log(req.body);
+}) 
 
 mongoose
   .connect(
