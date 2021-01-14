@@ -1,7 +1,7 @@
 import classes from "./Products.module.css";
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
-import image from "../../assets/shoes.png";
+import image from "../../assets/shoes.jpg";
 import { connect } from "react-redux";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
@@ -43,9 +43,6 @@ const Products = (props) => {
       <div style={{ position: "relative" }}>
         <header>
           <img src={image} alt="default" className={classes.mainImage} />
-          <p className={classes.Quote}>
-            We have the best products on the market
-          </p>
         </header>
       </div>
       <div className={classes.filterOptions}>
@@ -64,7 +61,7 @@ const Products = (props) => {
         </button>
       </div>
       <div className={classes.Products}>
-        {loading ? <Spinner /> : null}
+      {loading ? <Spinner /> : null}
         {props.products ? (
           props.products.map((item) => {
             return (
