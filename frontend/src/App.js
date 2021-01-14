@@ -25,14 +25,6 @@ const App = (props) => {
         <header>
           <div className={classes.navbar}>
             <Link to="/">Home</Link>
-            <div className={classes.dropdown}>
-              <button className={classes.dropbtn}>Dropdown</button>
-              <div className={classes.dropdownContent}>
-                <Link to="/products/clothes">Clothes</Link>
-                <Link to="/products/shoes">Shoes</Link>
-                <Link to="/products/hats">Hats</Link>
-              </div>
-            </div>
 
             {props.currentUser.username ? (
               <>
@@ -54,7 +46,6 @@ const App = (props) => {
         <Route exact path="/">
           {props.loggedIn ? <Products /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/categories" exact render={() => <h1>Categories</h1>} />
         <Route path="/login" exact component={Login}>
           {" "}
           {props.loggedIn === false ? <Login /> : <Redirect to="/" />}
@@ -64,10 +55,6 @@ const App = (props) => {
           {props.loggedIn ? <Account /> : <Redirect to="/login" />}
         </Route>
         <Route path="/cart" exact render={() => <h1>Cart</h1>} />
-        <Route path="/add" exact component={AddItem} />
-        <Route path="/products/clothes" exact render={() => <h1>cloth</h1>} />
-        <Route path="/products/shoes" exact render={() => <h1>shoes</h1>} />
-        <Route path="/products/hats" exact render={() => <h1>hats</h1>} />
       </div>
     </BrowserRouter>
   );
