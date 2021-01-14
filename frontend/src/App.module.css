@@ -1,5 +1,6 @@
-body{
-  font-family: 'Josefin Sans', cursive;
+body {
+  font-family: "Josefin Sans", cursive;
+  background-color: #ece7e7;
 }
 .navbar {
   overflow: hidden;
@@ -13,53 +14,11 @@ body{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  z-index: 300;
 }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 25px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover,
-.dropdown:hover .dropbtn {
+.navbar a:hover {
   background-color: rgb(218, 167, 0);
-}
-
-.dropdownContent {
-  display: none;
-  position: absolute;
-  background-color: #edfd05;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdownContent a {
-  float: none;
-  color: rgb(58, 35, 35);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdownContent a:hover {
-  background-color: rgb(255, 196, 0);
-}
-
-.dropdown:hover .dropdownContent {
-  display: block;
 }
 
 .rightNav {
