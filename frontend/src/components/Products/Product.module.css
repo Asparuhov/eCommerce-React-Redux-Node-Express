@@ -13,7 +13,7 @@
   transition: transform 0.2s;
   background-color: white;
   z-index: 200;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .product:hover {

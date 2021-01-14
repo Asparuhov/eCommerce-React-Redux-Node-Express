@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Login from "../../containers/Login/Login";
 import classes from "./Account.module.css";
 const Account = (props) => {
- 
   return (
     <div className={classes.Account}>
       <h1>Account info</h1>

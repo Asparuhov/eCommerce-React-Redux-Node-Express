@@ -61,7 +61,7 @@ const Products = (props) => {
         </button>
       </div>
       <div className={classes.Products}>
-      {loading ? <Spinner /> : null}
+        {loading ? <Spinner /> : null}
         {props.products ? (
           props.products.map((item) => {
             return (

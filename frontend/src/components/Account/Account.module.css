@@ -10,17 +10,17 @@
   margin-top: 50px;
 }
 
-.Account button{
-    font-size:20px;
-    width: 100px;
-    height: 25px;
-    background-color: orange;
-    border-radius: 3px;
-    border:none;
+.Account button {
+  font-size: 20px;
+  width: 100px;
+  height: 25px;
+  background-color: orange;
+  border-radius: 3px;
+  border: none;
 }
 
-.Account button:hover{
-    width:110px;
-    background-color: rgb(190, 126, 5);
-    border-radius: 5px;
+.Account button:hover {
+  width: 110px;
+  background-color: rgb(190, 126, 5);
+  border-radius: 5px;
 }
