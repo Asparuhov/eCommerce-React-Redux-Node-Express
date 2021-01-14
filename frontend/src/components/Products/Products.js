@@ -4,12 +4,18 @@ import Product from "./Product";
 import image from "../../assets/shoes.png";
 import { connect } from "react-redux";
 import axios from "axios";
+//categories:
+//electronics,
+//men clothing,
+//women clothing,
+//jewelery
 const Products = (props) => {
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products/")
+      .get("https://fakestoreapi.com/products/category/women clothing")
       .then(function (response) {
         props.setProducts(response.data);
+        console.log(response);
       })
       .catch(function (error) {
         console.error(error);
@@ -20,8 +26,17 @@ const Products = (props) => {
       <div style={{ position: "relative" }}>
         <header>
           <img src={image} alt="default" className={classes.mainImage} />
-          <p className={classes.Quote}>We have the best products on the market</p>
+          <p className={classes.Quote}>
+            We have the best products on the market
+          </p>
         </header>
+      </div>
+      <div className={classes.filterOptions}>
+        <button>All</button>
+        <button>Electronics</button>
+        <button>Men</button>
+        <button>Women</button>
+        <button>Jewelery</button>
       </div>
       <div className={classes.Products}>
         {props.products.map((item) => {
@@ -30,7 +45,7 @@ const Products = (props) => {
               source={item.image}
               info={item.title}
               price={item.price}
-              key={item}
+              key={item.id}
             />
           );
         })}
