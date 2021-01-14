@@ -5,18 +5,16 @@ import image from "../../assets/shoes.png";
 import { connect } from "react-redux";
 import axios from "axios";
 const Products = (props) => {
-  let [products, setProducts] = useState([]);
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products/")
       .then(function (response) {
-        setProducts(response.data);
-        console.log(response.data);
+        props.setProducts(response.data);
       })
       .catch(function (error) {
         console.error(error);
       });
-  });
+  }, []);
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -26,12 +24,13 @@ const Products = (props) => {
         </header>
       </div>
       <div className={classes.Products}>
-        {products.map((item) => {
+        {props.products.map((item) => {
           return (
             <Product
               source={item.image}
               info={item.title}
               price={item.price}
+              key={item.id}
             />
           );
         })}
@@ -42,8 +41,13 @@ const Products = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
+    products: state.products,
   };
 };
-
-export default connect(mapStateToProps)(Products);
+const toActions = (dispatch) => {
+  return {
+    setProducts: (products) =>
+      dispatch({ type: "SETPRODUCTS", products: products }),
+  };
+};
+export default connect(mapStateToProps, toActions)(Products);

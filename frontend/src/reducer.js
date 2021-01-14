@@ -1,7 +1,7 @@
 let initialState = {
   currentUser: {},
   loggedIn: false,
-  items: [],
+  products: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +14,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.user,
-        loggedIn: true
+        loggedIn: true,
+      };
+    case "SETPRODUCTS":
+      return {
+        ...state,
+        products: action.products,
       };
     default:
       return state;
