@@ -2,9 +2,3 @@
    command = "npm run build"
    publish = "/build"
    base = "/frontend"
-
-[[redirects]]
-  from = "https://happy-curie-d26fec.netlify.app/"
-  to = "https://happy-curie-d26fec.netlify.app/"
-  status = 301
-  force = true
