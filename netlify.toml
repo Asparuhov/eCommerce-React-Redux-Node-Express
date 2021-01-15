@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-  functions = "npm build && cd functions/node-fetch && npm"
-  publish = "dist"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-  Access-Control-Allow-Origin = "*"
