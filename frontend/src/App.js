@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import classes from "./App.module.css";
 import { BrowserRouter, Link, Route, Redirect } from "react-router-dom";
 import Products from "./components/Products/Products";
-
 import Login from "./containers/Login/Login";
 import AddItem from "./components/AddItem/AddItem";
 import Register from "./containers/Register/Register";
@@ -44,9 +43,7 @@ const App = (props) => {
           </div>
         </header>
 
-        <Route exact path="/">
-          {props.loggedIn ? <Products /> : <Redirect to="/login" />}
-        </Route>
+        <Route exact path="/" component={Products} />
         <Route path="/login" exact component={Login}>
           {" "}
           {props.loggedIn === false ? <Login /> : <Redirect to="/" />}

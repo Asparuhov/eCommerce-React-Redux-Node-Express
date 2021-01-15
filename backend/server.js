@@ -14,6 +14,17 @@ app.get("/user", authenticateToken, (req, res, next) => {
   res.send(req.user);
 });
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json"
+  );
+  next();
+});
+
 app.post("/register", async (req, res) => {
   let { username, email, password } = req.body;
   const salt = await bcrypt.genSalt();
@@ -46,7 +57,7 @@ app.get("/test", (req, res) => {
   });
 });
 
-app.post("/login", async (req, res, next) => {
+app.post("/login", (req, res, next) => {
   let { email, password } = req.body;
 
   User.findOne({ email: email }).then((user) => {
@@ -55,7 +66,7 @@ app.post("/login", async (req, res, next) => {
         if (err) throw err;
         if (response) {
           console.log(user);
-          const accessToken = await  jwt.sign(
+          const accessToken = jwt.sign(
             user.toJSON(),
             process.env.ACCESS_TOKEN_SECRET
           );
