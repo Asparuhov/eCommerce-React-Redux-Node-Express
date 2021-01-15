@@ -8,11 +8,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://happy-curie-d26fec.netlify.app/",
-  })
-);
+app.use(cors());
 
 app.get("/user", authenticateToken, (req, res, next) => {
   res.send(req.user);
@@ -47,7 +43,7 @@ app.get("/test", (req, res) => {
     if (result) {
       res.send(result);
     }
-  })
+  });
 });
 
 app.post("/login", (req, res, next) => {
@@ -65,15 +61,15 @@ app.post("/login", (req, res, next) => {
           );
           res.json({ accessToken: accessToken });
           console.log("Authenticated");
-          res.send('Authenticated')
+          res.send("Authenticated");
         } else {
           console.log("Incorrect password");
-          res.send('Incorrect password');
+          res.send("Incorrect password");
         }
       });
     } else {
       console.log("This email is not registered!");
-      res.send('Not registered');
+      res.send("Not registered");
     }
   });
 });
