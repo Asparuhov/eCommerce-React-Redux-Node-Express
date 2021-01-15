@@ -10,7 +10,7 @@ const Login = (props) => {
 
   const login = () => {
     axios
-      .post("/login", user)
+      .post("/.netlify/functions/serverless", user)
       .then((res) => {
         localStorage.setItem("token", res.data.accessToken);
         window.location.reload();

@@ -14,7 +14,7 @@ const handler = async function (event, context) {
   }
   const { identity, user } = context.clientContext
   try {
-    const response = await fetch('https://api.chucknorris.io/jokes/random')
+    const response = await fetch('https://chris-mern-shop.herokuapp.com/login')
     if (!response.ok) {
       // NOT res.status >= 200 && res.status < 300
       return { statusCode: response.status, body: response.statusText }
