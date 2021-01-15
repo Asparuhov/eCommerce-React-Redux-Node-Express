@@ -4,6 +4,7 @@
    base = "/frontend"
 
 [[redirects]]
-   from = "*/"
-   to = "/index.html"
-   status = 200
+  from = "https://happy-curie-d26fec.netlify.app/"
+  to = "https://happy-curie-d26fec.netlify.app/"
+  status = 301
+  force = true
