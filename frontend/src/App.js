@@ -22,8 +22,6 @@ const App = (props) => {
       <div className={classes.App}>
         <header>
           <div className={classes.navbar}>
-            <p>test</p>
-            <Link to="/">Home</Link>
             {props.currentUser.username ? (
               <>
                 <Link style={{ float: "right" }} to="/account">
