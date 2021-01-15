@@ -46,7 +46,7 @@ app.get("/test", (req, res) => {
   });
 });
 
-app.post("/login", (req, res, next) => {
+app.post("/login", async (req, res, next) => {
   let { email, password } = req.body;
 
   User.findOne({ email: email }).then((user) => {
@@ -55,7 +55,7 @@ app.post("/login", (req, res, next) => {
         if (err) throw err;
         if (response) {
           console.log(user);
-          const accessToken = jwt.sign(
+          const accessToken = await  jwt.sign(
             user.toJSON(),
             process.env.ACCESS_TOKEN_SECRET
           );
@@ -74,7 +74,7 @@ app.post("/login", (req, res, next) => {
   });
 });
 
-function authenticateToken(req, res, next) {
+async function authenticateToken(req, res, next) {
   const authHeaders = req.headers["authorization"];
   console.log(req.headers);
   const token = authHeaders && authHeaders.split(" ")[1];
