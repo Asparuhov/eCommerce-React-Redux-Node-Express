@@ -9,6 +9,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import Account from "./components/Account/Account";
 import Cart from "./containers/Cart/Cart";
+import { PromiseProvider } from "mongoose";
 
 const App = (props) => {
   useEffect(() => {
@@ -43,9 +44,11 @@ const App = (props) => {
           </div>
         </header>
 
-        <Route exact path="/" component={Products} />
-        <Route path="/login" exact component={Login}>
+        <Route exact path="/">
           {" "}
+          {props.loggedIn ? <Products /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/login" exact component={Login}>
           {props.loggedIn === false ? <Login /> : <Redirect to="/" />}
         </Route>
         <Route path="/register" exact component={Register} />
