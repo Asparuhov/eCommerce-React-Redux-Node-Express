@@ -65,12 +65,15 @@ app.post("/login", (req, res, next) => {
           );
           res.json({ accessToken: accessToken });
           console.log("Authenticated");
+          res.send('Authenticated')
         } else {
           console.log("Incorrect password");
+          res.send('Incorrect password');
         }
       });
     } else {
       console.log("This email is not registered!");
+      res.send('Not registered');
     }
   });
 });

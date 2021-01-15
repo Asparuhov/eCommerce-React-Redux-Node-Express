@@ -11,7 +11,7 @@ const Register = (props) => {
 
   const register = () => {
     axios
-      .post("register", user)
+      .post("/register", user)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
