@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const User = require("./userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(
@@ -38,6 +39,15 @@ app.post("/register", async (req, res) => {
         .catch((err) => console.log(err));
     }
   });
+});
+
+app.get("/test", (req, res) => {
+  User.find({}, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      res.send(result);
+    }
+  })
 });
 
 app.post("/login", (req, res, next) => {
@@ -84,9 +94,9 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.post('cart', (req, res) => {
+app.post("cart", (req, res) => {
   console.log(req.body);
-}) 
+});
 
 mongoose
   .connect(
@@ -97,7 +107,7 @@ mongoose
     }
   )
   .then((res) => {
-    app.listen(4000);
+    app.listen(process.env.PORT || 4000);
     console.log("Connected to database");
   })
   .catch((err) => console.log(err));
