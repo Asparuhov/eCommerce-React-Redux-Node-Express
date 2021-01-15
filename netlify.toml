@@ -1,8 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-
-[build]
-  command = "yarn run build"
-  functions = "functions"
-  publish = "dist"
