@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import classes from "./App.module.css";
 import { BrowserRouter, Link, Route, Redirect } from "react-router-dom";
 import Products from "./components/Products/Products";
 import Login from "./containers/Login/Login";
-import AddItem from "./components/AddItem/AddItem";
 import Register from "./containers/Register/Register";
 import axios from "axios";
 import { connect } from "react-redux";
 import Account from "./components/Account/Account";
 import Cart from "./containers/Cart/Cart";
-import { PromiseProvider } from "mongoose";
-
 const App = (props) => {
   useEffect(() => {
     axios
@@ -26,7 +23,6 @@ const App = (props) => {
         <header>
           <div className={classes.navbar}>
             <Link to="/">Home</Link>
-
             {props.currentUser.username ? (
               <>
                 <Link style={{ float: "right" }} to="/account">
@@ -44,10 +40,8 @@ const App = (props) => {
           </div>
         </header>
 
-        <Route exact path="/">
-          {" "}
-          {props.loggedIn ? <Products /> : <Redirect to="/login" />}
-        </Route>
+        <Route exact path="/" component={Products} />
+
         <Route path="/login" exact component={Login}>
           {props.loggedIn === false ? <Login /> : <Redirect to="/" />}
         </Route>

@@ -14,17 +14,6 @@ app.get("/user", authenticateToken, (req, res, next) => {
   res.send(req.user);
 });
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json"
-  );
-  next();
-});
-
 app.post("/register", async (req, res) => {
   let { username, email, password } = req.body;
   const salt = await bcrypt.genSalt();
@@ -65,34 +54,27 @@ app.post("/login", (req, res, next) => {
       bcrypt.compare(password, user.password, (err, response) => {
         if (err) throw err;
         if (response) {
-          console.log(user);
           const accessToken = jwt.sign(
             user.toJSON(),
-            process.env.ACCESS_TOKEN_SECRET
+            "2150b00546dd908c7357b9ff597711128cd6"
           );
           res.json({ accessToken: accessToken });
-          console.log("Authenticated");
-          res.send("Authenticated");
-        } else {
-          console.log("Incorrect password");
-          res.send("Incorrect password");
         }
       });
     } else {
       console.log("This email is not registered!");
-      res.send("Not registered");
     }
   });
 });
 
-async function authenticateToken(req, res, next) {
+function authenticateToken(req, res, next) {
   const authHeaders = req.headers["authorization"];
   console.log(req.headers);
   const token = authHeaders && authHeaders.split(" ")[1];
   if (token === null) {
     res.status(401).send("Error");
   }
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, "2150b00546dd908c7357b9ff597711128cd6", (err, user) => {
     if (err) throw err;
     console.log(user);
     req.user = {
