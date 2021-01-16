@@ -42,7 +42,7 @@ const Products = (props) => {
   /* if (props.cart.length > 0) {
     dispatch(saveToDB({type: 'SAVETODB'}));
   } */
-  //save
+
   return (
     <>
       <div style={{ position: "relative" }}>
