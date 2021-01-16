@@ -7,11 +7,51 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const app = express();
+const mailer = require("nodemailer");
 app.use(express.json());
 app.use(cors());
 
 app.get("/user", authenticateToken, (req, res, next) => {
   res.send(req.user);
+});
+
+const transporter = mailer.createTransport({
+  service: "hotmail",
+  auth: {
+    user: "ecommerce-chris@outlook.com",
+    pass: "Krisi0143171864a",
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+app.post("/email", (req, res) => {
+  const itemsInfo = req.body.content.itemsInfo;
+  const totalPrice = req.body.content.totalPrice;
+  const { name, email, address } = req.body.userInfo;
+  let arrayItems = "";
+  let n;
+  for (n in itemsInfo) {
+    arrayItems += "<li>" + itemsInfo[n] + "</li>";
+  }
+  const config = {
+    from: "ecommerce-chris@outlook.com",
+    to: email,
+    subject: "Test Order",
+    html: `<h2>Details for Order#${Math.floor(
+      Math.random() * Math.floor(100)
+    )}:</h2>
+      <p>Name of reciever: <strong> ${name} </strong></p>
+      <p>Order will be delivered at <strong> ${address} </strong> in 7 business days!</p>
+              <strong><ul>${arrayItems},</ul></strong>
+              <h3>Final price with fees: $${totalPrice}</h3>`,
+  };
+  transporter.sendMail(config, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      console.log("email sent");
+    }
+  });
 });
 
 app.post("/register", async (req, res) => {
