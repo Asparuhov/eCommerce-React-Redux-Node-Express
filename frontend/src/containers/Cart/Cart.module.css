@@ -52,3 +52,91 @@
   font-size: 25px;
   cursor: pointer;
 }
+
+.empty {
+  font-size: 30;
+  text-align: center;
+}
+
+.orderForm {
+  margin-top: 20px;
+  background-color: orange;
+  width: 600px;
+  margin: 0 auto;
+  animation: slide 1s ease forwards;
+  border-radius: 15px;
+}
+
+.orderForm form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.orderForm form input {
+  margin-top: 30px;
+  font-size: 20px;
+  width: 70%;
+  height: 30px;
+  border: none;
+  border-bottom: 5px solid rgb(255, 102, 0);
+}
+.orderForm form input[type="text"],
+textarea,
+select {
+  outline: none;
+}
+.orderForm form button {
+  font-size: 25px;
+  width: 170px;
+  height: 50px;
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: orange;
+  font-weight: bolder;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(248, 142, 2, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(212, 103, 0);
+  color: white;
+}
+.orderForm form button:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(255, 123, 0);
+  color: white;
+  width: 220px;
+  font-size: 25px;
+  cursor: pointer;
+}
+@keyframes slide {
+  from {
+    height: 0;
+  }
+  to {
+    height: 315px;
+  }
+}
+@media (max-width: 700px) {
+  .orderForm {
+    width: 90%;
+  }
+}

@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import CartItem from "./CartItem.js";
-import classes from './Cart.module.css';
+import classes from "./Cart.module.css";
 import * as actions from "../../actions/actions";
 const Cart = (props) => {
+  let [show, setShow] = useState(false);
+
   return (
     <div>
-      {props.cart ? (
+      {props.cart.length > 0 ? (
         props.cart.map((item) => {
           if (typeof item !== "number") {
             return (
@@ -30,18 +32,42 @@ const Cart = (props) => {
           }
         })
       ) : (
-        <h1 style={{ margin: "0 auto", marginTop: "30px" }}>
-          Start adding items to your cart!
+        <h1 className={classes.empty}>
+          Your cart is empty! Start adding products!
         </h1>
       )}
-      {props.cart.length > 0 ? (
+      {show ? (
+        <div className={classes.orderForm}>
+          <form>
+            <input type="text" placeholder="Full name" />
+            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Address" />
+            <p>Total to pay: ${props.cart
+              .reduce((a, b) => {
+                return a + b.totalPrice;
+              }, 0)
+              .toFixed(2)}</p>
+            <button>Send order</button>
+          </form>
+        </div>
+      ) : null}
+      {props.cart.length > 0 && !show ? (
         <div className={classes.order}>
-          <button>Order now!</button>
+          <button
+            onClick={() => {
+              setShow(true);
+              window.scrollTo(0, document.body.scrollHeight);
+            }}
+          >
+            Order now
+          </button>
           <p>
             total price: $
-            {props.cart.reduce((a, b) => {
-              return a + b.totalPrice;
-            }, 0)}
+            {props.cart
+              .reduce((a, b) => {
+                return a + b.totalPrice;
+              }, 0)
+              .toFixed(2)}
           </p>
         </div>
       ) : null}
