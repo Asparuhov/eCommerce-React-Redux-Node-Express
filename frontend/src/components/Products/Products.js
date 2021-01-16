@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.jpg";
 import { connect, useDispatch } from "react-redux";
-
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
-import { saveToDB } from "../../reducer";
+import * as actions from "../../actions/actions";
 //categories:
 //electronics,
 //men clothing,
@@ -14,14 +13,12 @@ import { saveToDB } from "../../reducer";
 //jewelery
 const Products = (props) => {
   let [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://fakestoreapi.com/products/")
       .then(function (response) {
         props.setProducts(response.data);
-        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -39,9 +36,6 @@ const Products = (props) => {
         console.error(error);
       });
   };
-  /* if (props.cart.length > 0) {
-    dispatch(saveToDB({type: 'SAVETODB'}));
-  } */
 
   return (
     <>
@@ -97,6 +91,7 @@ const Products = (props) => {
                     });
                   } else if (index >= 0) {
                     props.increaseCount(item.id);
+                    props.clearCart();
                   }
                 }}
               />
@@ -114,19 +109,20 @@ const mapStateToProps = (state) => {
   return {
     products: state.products,
     cart: state.currentCart,
+    user: state.currentUser,
   };
 };
 const toActions = (dispatch) => {
   return {
-    setProducts: (products) =>
-      dispatch({ type: "SETPRODUCTS", products: products }),
+    setProducts: (products) => dispatch(actions.setProducts(products)),
     addToCart: (obj) =>
       dispatch({
         type: "ADDTOCART",
         obj,
       }),
     increaseCount: (id) =>
-      dispatch({ type: "INCREASECOUNT", id: id, incdec: "increment" }),
+      dispatch(actions.increaseCount({ id: id, incdec: "increment" })),
+    clearCart: () => dispatch(actions.cartClearing()),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);

@@ -86,7 +86,7 @@ function authenticateToken(req, res, next) {
 }
 
 app.post("/cart", (req, res) => {
-  console.log(req.body, "cat");
+  console.log(req.body);
 });
 
 mongoose

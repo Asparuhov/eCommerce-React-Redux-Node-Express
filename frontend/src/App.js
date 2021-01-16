@@ -8,6 +8,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import Account from "./components/Account/Account";
 import Cart from "./containers/Cart/Cart";
+import * as actions from "./actions/actions";
 const App = (props) => {
   useEffect(() => {
     axios
@@ -63,7 +64,7 @@ const mapStateToProps = (state) => {
 };
 const toActions = (dispatch) => {
   return {
-    setCurrentUser: (user) => dispatch({ type: "SETCURRENTUSER", user: user }),
+    setCurrentUser: (user) => dispatch(actions.setCurrentUser(user)),
   };
 };
 export default connect(mapStateToProps, toActions)(App);
