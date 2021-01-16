@@ -2,7 +2,8 @@ import classes from "./Products.module.css";
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.jpg";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import { saveToDB } from "../../reducer";
@@ -13,6 +14,7 @@ import { saveToDB } from "../../reducer";
 //jewelery
 const Products = (props) => {
   let [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
     axios
@@ -37,6 +39,9 @@ const Products = (props) => {
         console.error(error);
       });
   };
+  /* if (props.cart.length > 0) {
+    dispatch(saveToDB({type: 'SAVETODB'}));
+  } */
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -119,7 +124,8 @@ const toActions = (dispatch) => {
         type: "ADDTOCART",
         obj,
       }),
-    increaseCount: (id) => dispatch({ type: "INCREASECOUNT", id: id , incdec: 'increment'}),
+    increaseCount: (id) =>
+      dispatch({ type: "INCREASECOUNT", id: id, incdec: "increment" }),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);

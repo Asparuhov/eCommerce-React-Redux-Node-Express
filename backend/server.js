@@ -69,7 +69,6 @@ app.post("/login", (req, res, next) => {
 
 function authenticateToken(req, res, next) {
   const authHeaders = req.headers["authorization"];
-  console.log(req.headers);
   const token = authHeaders && authHeaders.split(" ")[1];
   if (token === null) {
     res.status(401).send("Error");
@@ -86,8 +85,8 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.post("cart", (req, res) => {
-  console.log(req.body);
+app.post("/cart", (req, res) => {
+  console.log(req.body, "cat");
 });
 
 mongoose

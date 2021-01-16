@@ -61,6 +61,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentCart: state.currentCart.filter((_, index) => index !== indx),
       };
+    case "SAVETODB":
+      return state;
     default:
       return state;
   }
@@ -69,17 +71,13 @@ const reducer = (state = initialState, action) => {
 export default reducer;
 
 /* export const saveToDB = () => async (dispatch, getState) => {
-  const cart = getState.cart;
-  const currentUser = getState.currentUser;
-  await axios
-    .post("http://localhost:4000/cart", {
-      cart: cart,
-      email: currentUser.email,
-    })
-    .then(() => console.log("Updated cart"))
-    .catch((err) => console.log(err));
-};
-export const loadToStore = () => async (dispatch, getState) => {
+  const cart = getState.currentCart;
+  console.log(cart);
+  await axios.post("http://localhost:4000/cart", cart);
+  alert("success");
+}; */
+
+/* export const loadToStore = () => async (dispatch, getState) => {
   let cart;
   await axios
     .get("http://localhost:4000/cart")
@@ -87,4 +85,5 @@ export const loadToStore = () => async (dispatch, getState) => {
     .catch((err) => console.log(err));
   dispatch({ type: "SETCART", cart: cart });
 };
+ 
  */
