@@ -68,6 +68,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentCart: filteredArr,
       };
+    case "TOTALCLEAR":
+      return {
+        ...state,
+        currentCart: [],
+      };
     default:
       return state;
   }

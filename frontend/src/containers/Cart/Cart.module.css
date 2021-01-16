@@ -67,7 +67,7 @@
   border-radius: 15px;
 }
 
-.orderForm form {
+.orderForm .form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   align-items: center;
   animation: pop 1.5s ease-in forwards;
 }
-.orderForm form input {
+.orderForm .form input {
   margin-top: 30px;
   font-size: 20px;
   width: 70%;
@@ -83,12 +83,12 @@
   border: none;
   border-bottom: 5px solid rgb(255, 102, 0);
 }
-.orderForm form input[type="text"],
+.orderForm .form input[type="text"],
 textarea,
 select {
   outline: none;
 }
-.orderForm form button {
+.orderForm .form button {
   font-size: 25px;
   width: 170px;
   height: 50px;
@@ -116,7 +116,7 @@ select {
   background-color: rgb(212, 103, 0);
   color: white;
 }
-.orderForm form button:hover {
+.orderForm .form button:hover {
   border: 1px solid;
   box-shadow: inset 0 0 20px 0 0 20px rgba(255, 255, 255, 0.2);
   outline-color: rgba(255, 255, 255, 0);
@@ -128,6 +128,35 @@ select {
   font-size: 25px;
   cursor: pointer;
 }
+.accepted {
+  animation: one 4s ease-in forwards;
+}
+.empty {
+  margin-top: 20px;
+  animation-name: bor;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  padding: 25px;
+}
+
+@keyframes bor {
+  0% {
+    font-size: 22px;
+  }
+  25% {
+    font-size: 24px;
+  }
+  50% {
+    font-size: 26px;
+  }
+  75% {
+    font-size: 24px;
+  }
+  100% {
+    font-size: 22px;
+  }
+}
 @keyframes slide {
   from {
     height: 0;
@@ -136,18 +165,37 @@ select {
     height: 315px;
   }
 }
-
-@keyframes pop {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-    100%{
-        opacity:1;
-    }
+@keyframes one {
+  0% {
+    opacity: 0.25;
   }
+  25% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media (max-width: 700px) {
   .orderForm {
     width: 90%;

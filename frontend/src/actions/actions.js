@@ -28,3 +28,5 @@ export const cartClearing = () => {
     dispatch(clearCart());
   };
 };
+
+export const totalClear = () => ({type: 'TOTALCLEAR'})
