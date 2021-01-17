@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducer";
 import thunk from "redux-thunk";
-axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "https://chris-mern-shop.herokuapp.com/";
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

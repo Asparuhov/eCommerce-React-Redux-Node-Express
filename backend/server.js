@@ -99,11 +99,11 @@ app.post("/login", (req, res, next) => {
           );
           res.json({ accessToken: accessToken });
         } else {
-          res.send('pass')
+          res.send("pass");
         }
       });
     } else {
-      res.send('email')
+      res.send("email");
     }
   });
 });
