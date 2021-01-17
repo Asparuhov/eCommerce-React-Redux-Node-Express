@@ -6,7 +6,7 @@ export default function CartItem(props) {
           <div className={classes.x} onClick={props.remove}></div>
       <img src={props.image} alt="error" />
       <div className={classes.about}>
-        <p>{props.info}</p>
+        <p className={classes.info}>{props.info}</p>
         <p style={{ color: "green" }}>In Stock</p>
       </div>
       <div className={classes.count}>

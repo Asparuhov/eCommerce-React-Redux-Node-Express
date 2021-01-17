@@ -1,3 +1,6 @@
+*:focus {
+  outline: none !important;
+}
 .CartItem {
   display: flex;
   justify-content: center;
@@ -11,6 +14,7 @@
   padding: 5px;
   background-color: white;
   position: relative;
+  overflow: hidden;
 }
 
 .CartItem img {
@@ -85,9 +89,44 @@
   cursor: pointer;
 }
 
-
-@media (max-width: 700px){
-  .CartItem{
-    width: 90%
+@media (max-width: 700px) {
+  .CartItem {
+    width: 90%;
   }
+}
+@media (max-width: 550px) {
+  .CartItem {
+    width: 97%;
+  }
+  .count {
+    left: 53%;
+    margin-top: 40px;
+  }
+  .price {
+    left: 75%;
+    margin-top: 40px;
+  }
+ .info{
+ font-size: 15px;
+ }
+}
+@media (max-width: 442px){
+  .info{
+    font-size: 13px;
+    margin-top: 25px;
+    }
+    .price p{
+      font-size: 15px;
+    }
+}
+@media (max-width: 375px){
+  .CartItem .about .info{
+    font-size: 12px;
+    margin-top: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    }
+    .price p{
+      font-size: 15px;
+    }
 }

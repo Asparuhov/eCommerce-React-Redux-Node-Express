@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Register.module.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 const Register = (props) => {
   let [user, setUser] = useState({
@@ -8,11 +8,18 @@ const Register = (props) => {
     email: "",
     password: "",
   });
-
+  let [feedback, setFeedback] = useState("");
   const register = () => {
     axios
       .post("/register", user)
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.data === "success") {
+          setFeedback("success");
+          <Redirect to="/login" />;
+        } else {
+          setFeedback("bad");
+        }
+      })
       .catch((err) => console.log(err));
   };
   return (
@@ -33,6 +40,14 @@ const Register = (props) => {
         type="password"
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       />
+      {feedback === "success" ? (
+        <p style={{ color: "green" }}>You registered successfuly!</p>
+      ) : null}
+      {feedback === "bad" ? (
+        <p style={{ color: "red" }}>
+          Email already registered, try another one
+        </p>
+      ) : null}
       <button onClick={() => register()}>Register</button>
       <p>
         Already registered?

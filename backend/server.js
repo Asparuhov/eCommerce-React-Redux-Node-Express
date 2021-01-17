@@ -60,8 +60,7 @@ app.post("/register", async (req, res) => {
   const hashedPass = await bcrypt.hash(password, salt);
   User.findOne({ email }).then((user) => {
     if (user) {
-      res.send("user already exists");
-      console.log("User already exists");
+      res.send("bad");
     } else {
       const newUser = new User({
         username: username,
@@ -71,7 +70,7 @@ app.post("/register", async (req, res) => {
       });
       newUser
         .save()
-        .then((res) => console.log("User created"))
+        .then(() => res.send("success"))
         .catch((err) => console.log(err));
     }
   });
@@ -99,10 +98,12 @@ app.post("/login", (req, res, next) => {
             "2150b00546dd908c7357b9ff597711128cd6"
           );
           res.json({ accessToken: accessToken });
+        } else {
+          res.send('pass')
         }
       });
     } else {
-      console.log("This email is not registered!");
+      res.send('email')
     }
   });
 });
