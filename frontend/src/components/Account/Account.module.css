@@ -2,30 +2,148 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  border: 2px solid orange;
-  width: 300px;
-  height: 400px;
+  flex-direction: row;
+  width: 70%;
+  height: 700px;
   margin: 0 auto;
   margin-top: 50px;
+  position: relative;
 }
 
-.Account button {
-  font-size: 20px;
-  width: 100px;
-  height: 25px;
-  background-color: orange;
-  border-radius: 3px;
+.Account .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: -700px;
   border: none;
+  flex-wrap: wrap;
 }
 
-.Account button:hover {
-  width: 110px;
-  background-color: rgb(190, 126, 5);
-  border-radius: 5px;
+.Account .navbar button {
+  font-size: 25px;
+  height: 50px;
+  margin: 10px;
+  top: 25px;
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: orange;
+  font-weight: bolder;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(248, 142, 2, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(212, 103, 0);
+  color: white;
 }
 
-.logo{
-  width:45%;
-  height:25%;
+.Account .navbar button:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(196, 152, 58);
+  color: white;
+  width: 220px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.Account .details {
+  position: absolute;
+  background-color: orange;
+  bottom: 50px;
+  width: 70%;
+  animation: slide 1s ease forwards;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Account .details p {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.Account .details img {
+  width: 50%;
+  top: 100px;
+  left: 50px;
+}
+@keyframes slide {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 550px;
+  }
+}
+
+@media (max-width: 1039px) {
+  .Account .details p {
+    font-size: 30px;
+  }
+}
+@media (max-width: 878px) {
+  .Account .details p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 595px) {
+  .Account .details p {
+    font-size: 15px;
+  }
+}
+@media (max-width: 650px) {
+  .Account .navbar {
+    margin-top: -680px;
+  }
+  .Account {
+    width: 95%;
+  }
+}
+@media (max-width: 470px) {
+  .Account .navbar {
+    margin-top: -630px;
+  }
+}
+@media (max-width: 480px) {
+  .Account .navbar {
+    margin-top: -670px;
+  }
+  .Account .navbar button {
+    width: 120px;
+    height: 50px;
+    font-size: 15px;
+  }
+  .Account .navbar {
+    margin-bottom: 5px;
+  }
+  .Account .navbar button:hover {
+    width: 130px;
+    height: 50px;
+    font-size: 16px;
+  }
+  .Account {
+    width: 100%;
+  }
+  .Account .details {
+    width: 100%;
+  }
 }

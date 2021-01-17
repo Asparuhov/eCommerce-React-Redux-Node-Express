@@ -26,7 +26,7 @@ const Cart = (props) => {
             style={{ textAlign: "center", marginTop: "15px" }}
             className={classes.accepted}
           >
-            Order accepted, check your account tab! Clearing cart...
+            Thank you for ordering! Check your email for order details or go to Account 
           </h1>
         </div>
       ) : null}
