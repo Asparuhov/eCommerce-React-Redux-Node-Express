@@ -24,3 +24,18 @@ body {
 .rightNav {
   float: right;
 }
+
+.redDot{
+  width:25px;
+  height:25px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top:5px;
+  right:-7px;
+  font-size: 17px;
+}
+
+.cart{
+  position:relative;
+}

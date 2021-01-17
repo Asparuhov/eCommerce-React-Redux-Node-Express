@@ -29,7 +29,14 @@ const App = (props) => {
                 <Link style={{ float: "right" }} to="/account">
                   Account
                 </Link>
-                <Link style={{ float: "right" }} to="/cart">
+                <Link
+                  style={{ float: "right" }}
+                  className={classes.cart}
+                  to="/cart"
+                >
+                  {props.cart.length > 0 ? (
+                    <div className={classes.redDot}>{props.cart.length}</div>
+                  ) : null}
                   Cart
                 </Link>
               </>
@@ -60,6 +67,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
     loggedIn: state.loggedIn,
+    cart: state.currentCart,
   };
 };
 const toActions = (dispatch) => {
