@@ -3,7 +3,8 @@ import classes from "./Product.module.css";
 
 export default function Product(props) {
   return (
-    <div className={classes.product}>
+    <div className={classes.product} >
+      <span className={classes.heart}></span>
       <img className={classes.image} src={props.source} alt="default" />
       <p className={classes.info}>{props.info}</p>
       <p className={classes.price}>${props.price}</p>

@@ -50,7 +50,7 @@ const App = (props) => {
 
         <Route exact path="/" component={Products} />
 
-        <Route path="/login" exact component={Login}>
+        <Route path="/login" exact>
           {props.loggedIn === false ? <Login /> : <Redirect to="/" />}
         </Route>
         <Route path="/register" exact component={Register} />

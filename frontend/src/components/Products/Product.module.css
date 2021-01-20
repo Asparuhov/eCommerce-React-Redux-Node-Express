@@ -1,7 +1,9 @@
-*:focus {outline:none !important}
+*:focus {
+  outline: none !important;
+}
 .product {
-  width: 310px;
-  height: 400px;
+  width: 290px;
+  height: 380px;
   border: 3px solid rgb(255, 125, 3);
   display: flex;
   justify-content: center;
@@ -37,7 +39,7 @@
   text-align: center;
   word-break: break-word;
   position: absolute;
-  top: 55%;
+  top: 57%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -87,5 +89,43 @@
   color: white;
   width: 220px;
   font-size: 22px;
+  cursor: pointer;
+}
+.product:hover .heart {
+  display: inline-block;
+  z-index: 300;
+}
+
+.heart {
+  display: none;
+  background-color: red;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 25px;
+  position: absolute;
+  width: 25px;
+}
+
+.heart:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart:after {
+  left: 15px;
+  top: 0;
+}
+.heart:hover {
   cursor: pointer;
 }

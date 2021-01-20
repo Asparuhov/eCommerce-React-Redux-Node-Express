@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Login.module.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 const Login = (props) => {
   let [user, setUser] = useState({

@@ -4,6 +4,9 @@ import classes from "./Account.module.css";
 import userLogo from "../../assets/logo.png";
 const Account = (props) => {
   const [currentClicked, setCurrentClicked] = useState("");
+  useEffect(() => {
+    setCurrentClicked("details");
+  }, []);
   return (
     <div className={classes.Account}>
       <div className={classes.navbar}>

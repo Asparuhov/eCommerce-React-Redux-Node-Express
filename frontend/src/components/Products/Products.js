@@ -2,7 +2,7 @@ import classes from "./Products.module.css";
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.jpg";
-import { connect, useDispatch } from "react-redux";
+import { connect} from "react-redux";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import * as actions from "../../actions/actions";
@@ -12,9 +12,7 @@ import * as actions from "../../actions/actions";
 //women clothing,
 //jewelery
 const Products = (props) => {
-  let [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
     axios
       .get("https://fakestoreapi.com/products/")
       .then(function (response) {
