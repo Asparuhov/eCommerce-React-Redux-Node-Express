@@ -9,6 +9,11 @@ import { connect } from "react-redux";
 import Account from "./components/Account/Account";
 import Cart from "./containers/Cart/Cart";
 import * as actions from "./actions/actions";
+import WishList from "./containers/WishList/WishList";
+import homeLogo from "./assets/home.png";
+import wishLogo from "./assets/heart.png";
+import cartLogo from "./assets/cart.png";
+import accountLogo from "./assets/account.png";
 const App = (props) => {
   useEffect(() => {
     axios
@@ -23,11 +28,17 @@ const App = (props) => {
       <div className={classes.App}>
         <header>
           <div className={classes.navbar}>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <img src={homeLogo} alt="default" style={{ width: "50px" }} />
+            </Link>
             {props.currentUser.username ? (
               <>
                 <Link style={{ float: "right" }} to="/account">
-                  Account
+                  <img
+                    src={accountLogo}
+                    alt="default"
+                    style={{ width: "50px" }}
+                  />
                 </Link>
                 <Link
                   style={{ float: "right" }}
@@ -37,7 +48,10 @@ const App = (props) => {
                   {props.cart.length > 0 ? (
                     <div className={classes.redDot}>{props.cart.length}</div>
                   ) : null}
-                  Cart
+                  <img src={cartLogo} alt="default" style={{ width: "50px" }} />
+                </Link>
+                <Link style={{ float: "right" }} to="/wish-list">
+                  <img src={wishLogo} alt="default" style={{ width: "50px" }} />
                 </Link>
               </>
             ) : (
@@ -59,6 +73,9 @@ const App = (props) => {
         </Route>
         <Route path="/cart" exact>
           {props.loggedIn ? <Cart /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/wish-list" exact>
+          {props.loggedIn ? <WishList /> : <Redirect to="/login" />}
         </Route>
       </div>
     </BrowserRouter>

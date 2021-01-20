@@ -12,9 +12,6 @@ const Account = (props) => {
       <div className={classes.navbar}>
         <button onClick={() => setCurrentClicked("details")}>Details</button>
         <button onClick={() => setCurrentClicked("orders")}>Orders</button>
-        <button onClick={() => setCurrentClicked("favourites")}>
-          Favourites
-        </button>
         <button
           onClick={() => {
             localStorage.clear();

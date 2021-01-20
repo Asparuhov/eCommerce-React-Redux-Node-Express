@@ -5,6 +5,7 @@ let initialState = {
   loggedIn: false,
   products: [],
   currentCart: [],
+  currentFavourites: []
 };
 
 const reducer = (state = initialState, action) => {
