@@ -1,4 +1,3 @@
-
 //actions
 export const ADDITEM = "ADDITEM";
 export const SETCURRENTUSER = "SETCURRENTUSER";
@@ -8,6 +7,9 @@ export const INCREASECOUNT = "INCREASECOUNT";
 export const REMOVEITEM = "REMOVEITEM";
 export const SAVETODB = "SAVETODB";
 export const CLEARCART = "CLEARCART";
+export const TOTALCLEAR = "TOTALCLEAR";
+export const TOWISH = "TOWISH";
+export const REMOVEWISH = "REMOVEWISH";
 
 //actionCreators
 export const addItem = (payload) => ({ type: ADDITEM, payload: payload });
@@ -29,4 +31,6 @@ export const cartClearing = () => {
   };
 };
 
-export const totalClear = () => ({type: 'TOTALCLEAR'})
+export const totalClear = () => ({ type: TOTALCLEAR });
+export const toWish = (payload) => ({ type: TOWISH, payload });
+export const removeWish = (payload) => ({ type: REMOVEWISH, payload });

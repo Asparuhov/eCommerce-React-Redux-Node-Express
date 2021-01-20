@@ -2,7 +2,7 @@ import classes from "./Products.module.css";
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import image from "../../assets/shoes.jpg";
-import { connect} from "react-redux";
+import { connect } from "react-redux";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import * as actions from "../../actions/actions";
@@ -66,6 +66,14 @@ const Products = (props) => {
                 info={item.title}
                 price={item.price}
                 key={item.id}
+                toWish={() => {
+                  const index = props.wishlist.findIndex(
+                    (x) => x.id === item.id
+                  );
+                  if (index === -1) {
+                    props.toWish(item);
+                  }
+                }}
                 added={() => {
                   if (props.cart.length === 0) {
                     props.addToCart({
@@ -108,6 +116,7 @@ const mapStateToProps = (state) => {
     products: state.products,
     cart: state.currentCart,
     user: state.currentUser,
+    wishlist: state.currentWishList,
   };
 };
 const toActions = (dispatch) => {
@@ -121,6 +130,7 @@ const toActions = (dispatch) => {
     increaseCount: (id) =>
       dispatch(actions.increaseCount({ id: id, incdec: "increment" })),
     clearCart: () => dispatch(actions.cartClearing()),
+    toWish: (product) => dispatch(actions.toWish(product)),
   };
 };
 export default connect(mapStateToProps, toActions)(Products);

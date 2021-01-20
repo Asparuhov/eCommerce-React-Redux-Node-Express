@@ -1,0 +1,49 @@
+*:focus {
+  outline: none !important;
+}
+.Wishlist {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(236, 231, 231);
+}
+.empty {
+  margin-top: 20px;
+  animation-name: bor;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  padding: 25px;
+}
+@keyframes bor {
+  0% {
+    font-size: 22px;
+  }
+  15% {
+    font-size: 23px;
+  }
+  25% {
+    font-size: 24px;
+  }
+  35% {
+    font-size: 25px;
+  }
+  50% {
+    font-size: 26px;
+  }
+  65% {
+    font-size: 25px;
+  }
+  75% {
+    font-size: 24px;
+  }
+  85% {
+    font-size: 23px;
+  }
+  100% {
+    font-size: 22px;
+  }
+}

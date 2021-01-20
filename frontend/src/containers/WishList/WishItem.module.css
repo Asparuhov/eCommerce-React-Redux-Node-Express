@@ -1,0 +1,125 @@
+*:focus {
+  outline: none !important;
+}
+.WishItem {
+  width: 290px;
+  height: 380px;
+  border: 3px solid rgb(255, 125, 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin: 20px;
+  padding: 5px;
+  position: relative;
+  transition: transform 0.2s;
+  background-color: white;
+  z-index: 200;
+  border-radius: 8px;
+}
+
+.WishItem:hover {
+  transform: scale(1.13);
+}
+
+.WishItem:hover .info {
+  -webkit-line-clamp: 2;
+}
+
+.WishItem .image {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+}
+
+.WishItem .info {
+  font-size: 17px;
+  text-align: center;
+  word-break: break-word;
+  position: absolute;
+  top: 57%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.WishItem .price {
+  position: absolute;
+  top: 70%;
+}
+
+.WishItem button {
+  bottom: 10%;
+  position: absolute;
+  font-size: 25px;
+  width: 170px;
+  height: 50px;
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: orange;
+  font-weight: bolder;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.35s;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(248, 142, 2, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(212, 103, 0);
+  color: white;
+}
+.WishItem button:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(196, 152, 58);
+  color: white;
+  width: 220px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.x {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(
+      -45deg,
+      transparent 0%,
+      transparent 46%,
+      white 46%,
+      white 56%,
+      transparent 56%,
+      transparent 100%
+    ),
+    -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, white 46%, white
+          56%, transparent 56%, transparent 100%);
+  background-color: red;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  top: 2%;
+  right: 2%;
+  transition: all 0.2s ease-in-out;
+}
+.x:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}

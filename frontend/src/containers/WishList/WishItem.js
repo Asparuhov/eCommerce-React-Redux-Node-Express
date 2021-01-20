@@ -1,10 +1,9 @@
 import React from "react";
-import classes from "./Product.module.css";
-
-export default function Product(props) {
+import classes from "./WishItem.module.css";
+export default function WishItem(props) {
   return (
-    <div className={classes.product} >
-      <span className={classes.heart} onClick={props.toWish}></span>
+    <div className={classes.WishItem}>
+      <div className={classes.x} onClick={props.remove}></div>
       <img className={classes.image} src={props.source} alt="default" />
       <p className={classes.info}>{props.info}</p>
       <p className={classes.price}>${props.price}</p>

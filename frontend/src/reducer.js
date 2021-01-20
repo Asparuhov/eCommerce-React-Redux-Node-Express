@@ -1,11 +1,9 @@
-
-
 let initialState = {
   currentUser: {},
   loggedIn: false,
   products: [],
   currentCart: [],
-  currentFavourites: []
+  currentWishList: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -73,6 +71,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentCart: [],
+      };
+    case "TOWISH":
+      return {
+        ...state,
+        currentWishList: state.currentWishList.concat(action.payload),
+      };
+    case "REMOVEWISH":
+      const indx2 = state.currentWishList.findIndex(
+        (x) => x.id === action.payload.id
+      );
+      return {
+        ...state,
+        currentWishList: state.currentWishList.filter(
+          (_, index) => index !== indx2
+        ),
       };
     default:
       return state;

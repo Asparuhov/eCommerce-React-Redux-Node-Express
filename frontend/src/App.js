@@ -50,7 +50,10 @@ const App = (props) => {
                   ) : null}
                   <img src={cartLogo} alt="default" style={{ width: "50px" }} />
                 </Link>
-                <Link style={{ float: "right" }} to="/wish-list">
+                <Link style={{float: "right"}} to="/wish-list">
+                {props.wishlist.length > 0 ? (
+                    <div className={classes.redDotWish}>{props.wishlist.length}</div>
+                  ) : null}
                   <img src={wishLogo} alt="default" style={{ width: "50px" }} />
                 </Link>
               </>
@@ -87,6 +90,7 @@ const mapStateToProps = (state) => {
     currentUser: state.currentUser,
     loggedIn: state.loggedIn,
     cart: state.currentCart,
+    wishlist: state.currentWishList
   };
 };
 const toActions = (dispatch) => {
