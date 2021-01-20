@@ -25,27 +25,27 @@ body {
   float: right;
 }
 
-.redDot{
-  width:25px;
-  height:25px;
+.redDot {
+  width: 25px;
+  height: 25px;
   background-color: red;
   border-radius: 50%;
   position: absolute;
-  top:8px;
-  right:0px;
+  top: 8px;
+  right: 0px;
   font-size: 17px;
 }
 
-.cart{
-  position:relative;
+.cart {
+  position: relative;
 }
-.redDotWish{
-  width:25px;
-  height:25px;
+.redDotWish {
+  width: 25px;
+  height: 25px;
   background-color: red;
   border-radius: 50%;
   position: absolute;
-  top:15px;
-  right:173px;
+  top: 15px;
+  right: 173px;
   font-size: 17px;
 }

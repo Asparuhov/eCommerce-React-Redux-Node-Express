@@ -1,4 +1,6 @@
-*:focus {outline:none !important}
+*:focus {
+  outline: none !important;
+}
 .order {
   display: flex;
   justify-content: center;

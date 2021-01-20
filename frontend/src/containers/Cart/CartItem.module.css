@@ -106,27 +106,27 @@
     left: 75%;
     margin-top: 40px;
   }
- .info{
- font-size: 15px;
- }
+  .info {
+    font-size: 15px;
+  }
 }
-@media (max-width: 442px){
-  .info{
+@media (max-width: 442px) {
+  .info {
     font-size: 13px;
     margin-top: 25px;
-    }
-    .price p{
-      font-size: 15px;
-    }
+  }
+  .price p {
+    font-size: 15px;
+  }
 }
-@media (max-width: 375px){
-  .CartItem .about .info{
+@media (max-width: 375px) {
+  .CartItem .about .info {
     font-size: 12px;
     margin-top: 25px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    }
-    .price p{
-      font-size: 15px;
-    }
+  }
+  .price p {
+    font-size: 15px;
+  }
 }

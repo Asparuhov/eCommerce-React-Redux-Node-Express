@@ -93,14 +93,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-/* export const loadToStore = () => async (dispatch, getState) => {
-  let cart;
-  await axios
-    .get("http://localhost:4000/cart")
-    .then((res) => (cart = res.data))
-    .catch((err) => console.log(err));
-  dispatch({ type: "SETCART", cart: cart });
-};
- 
- */

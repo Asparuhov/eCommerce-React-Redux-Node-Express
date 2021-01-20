@@ -2,8 +2,8 @@ import React from "react";
 import classes from "./CartItem.module.css";
 export default function CartItem(props) {
   return (
-      <div className={classes.CartItem}>
-          <div className={classes.x} onClick={props.remove}></div>
+    <div className={classes.CartItem}>
+      <div className={classes.x} onClick={props.remove}></div>
       <img src={props.image} alt="error" />
       <div className={classes.about}>
         <p className={classes.info}>{props.info}</p>
