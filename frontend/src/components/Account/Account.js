@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Login from "../../containers/Login/Login";
 import classes from "./Account.module.css";
 import userLogo from "../../assets/logo.png";
 const Account = (props) => {

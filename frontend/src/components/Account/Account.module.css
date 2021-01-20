@@ -76,13 +76,13 @@
   align-items: center;
 }
 .Account .details p {
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
   margin-top: 5px;
 }
 
 .Account .details img {
-  width: 50%;
+  width: 40%;
   top: 100px;
   left: 50px;
 }
