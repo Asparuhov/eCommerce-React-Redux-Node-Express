@@ -23,6 +23,7 @@ const WishList = (props) => {
           props.wishlist.map((item) => {
             return (
               <WishItem
+                key={item.id}
                 source={item.image}
                 info={item.title}
                 price={item.price}
