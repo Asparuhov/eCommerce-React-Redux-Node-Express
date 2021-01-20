@@ -57,7 +57,9 @@ const App = (props) => {
         <Route path="/account" exact>
           {props.loggedIn ? <Account /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/cart" exact component={Cart} />
+        <Route path="/cart" exact>
+          {props.loggedIn ? <Cart /> : <Redirect to="/login" />}
+        </Route>
       </div>
     </BrowserRouter>
   );
