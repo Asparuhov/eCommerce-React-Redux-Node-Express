@@ -14,6 +14,7 @@ import homeLogo from "./assets/home.png";
 import wishLogo from "./assets/heart.png";
 import cartLogo from "./assets/cart.png";
 import accountLogo from "./assets/account.png";
+import loginLogo from "./assets/login.png";
 const App = (props) => {
   useEffect(() => {
     axios
@@ -50,16 +51,18 @@ const App = (props) => {
                   ) : null}
                   <img src={cartLogo} alt="default" style={{ width: "50px" }} />
                 </Link>
-                <Link style={{float: "right"}} to="/wish-list">
-                {props.wishlist.length > 0 ? (
-                    <div className={classes.redDotWish}>{props.wishlist.length}</div>
+                <Link style={{ float: "right" }} to="/wish-list">
+                  {props.wishlist.length > 0 ? (
+                    <div className={classes.redDotWish}>
+                      {props.wishlist.length}
+                    </div>
                   ) : null}
                   <img src={wishLogo} alt="default" style={{ width: "50px" }} />
                 </Link>
               </>
             ) : (
               <Link style={{ float: "right" }} to="/login">
-                Login
+                <img src={loginLogo} alt="default" style={{ width: "50px" }} />
               </Link>
             )}
           </div>
@@ -90,7 +93,7 @@ const mapStateToProps = (state) => {
     currentUser: state.currentUser,
     loggedIn: state.loggedIn,
     cart: state.currentCart,
-    wishlist: state.currentWishList
+    wishlist: state.currentWishList,
   };
 };
 const toActions = (dispatch) => {
