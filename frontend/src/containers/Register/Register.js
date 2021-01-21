@@ -21,21 +21,28 @@ const Register = (props) => {
           setErrorHandler(null);
         } else {
           setFeedback("bad");
+          setErrorHandler(null);
         }
       })
       .catch((err) => console.log(err));
   };
-  const validatePassword = (password) => {
-    if (passwordValidationRegex.test(password)) {
+  const validateUsername = (username) => {
+    if (username.length > 4) {
       register();
-      console.log("authorized");
+    } else {
+      setErrorHandler("name");
+    }
+  };
+  const validatePassword = (password, username) => {
+    if (passwordValidationRegex.test(password)) {
+      validateUsername(username);
     } else {
       setErrorHandler("pass");
     }
   };
-  const validateEmail = (email, password) => {
+  const validateEmail = (email, password, username) => {
     if (emailValidationRegex.test(email)) {
-      validatePassword(password);
+      validatePassword(password, username);
     } else {
       setErrorHandler("email");
     }
@@ -48,6 +55,19 @@ const Register = (props) => {
         type="text"
         onChange={(e) => setUser({ ...user, username: e.target.value })}
       />
+      {errorHandler === "name" ? (
+        <p
+          style={{
+            color: "red",
+            wordBreak: "break-all",
+            fontSize: "13px",
+            textAlign: "center",
+            padding: "10px",
+          }}
+        >
+          Username needs to be more than 4 characters long.
+        </p>
+      ) : null}
       <input
         placeholder="email"
         type="email"
@@ -81,7 +101,9 @@ const Register = (props) => {
           Email already registered, try another one
         </p>
       ) : null}
-      <button onClick={() => validateEmail(user.email, user.password)}>
+      <button
+        onClick={() => validateEmail(user.email, user.password, user.username)}
+      >
         Register
       </button>
       <p>
