@@ -90,7 +90,7 @@ app.post("/login", (req, res, next) => {
       bcrypt.compare(password, user.password, (err, response) => {
         if (err) throw err;
         if (response) {
-          const accessToken = jwt.sign(user.toJSON(), process.env.TOKEN_SECRET);
+          const accessToken = jwt.sign(user.toJSON(), '2150b00546dd908c7357b9ff597711128cd6');
           res.json({ accessToken: accessToken });
         } else {
           res.send("pass");
@@ -108,7 +108,7 @@ function authenticateToken(req, res, next) {
   if (token === null) {
     res.status(401).send("Error");
   }
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, '2150b00546dd908c7357b9ff597711128cd6', (err, user) => {
     if (err) throw err;
     req.user = {
       _id: user._id,
@@ -120,7 +120,7 @@ function authenticateToken(req, res, next) {
 }
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect('mongodb+srv://Chris:Krisi0143171864a@cluster0.d3hu6.mongodb.net/users?retryWrites=true&w=majority', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })

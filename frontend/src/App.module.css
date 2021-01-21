@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
 body {
-  font-family: "Josefin Sans", cursive;
+  font-family: "Noto Sans TC", sans-serif;
   background-color: #ece7e7;
 }
 .navbar {
