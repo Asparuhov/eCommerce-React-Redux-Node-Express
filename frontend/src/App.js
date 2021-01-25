@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./App.module.css";
 import { BrowserRouter, Link, Route, Redirect } from "react-router-dom";
-import Products from "./components/Products/Products";
+import Products from "./containers/Products/Products";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import axios from "axios";
