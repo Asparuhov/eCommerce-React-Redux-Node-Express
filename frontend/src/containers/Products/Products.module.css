@@ -1,0 +1,102 @@
+.Products {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(236, 231, 231);
+}
+
+.mainImage {
+  position: relative;
+  width: 100%;
+
+  background-position: center;
+  box-sizing: border-box;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: -500px;
+  border: none;
+  flex-wrap: wrap;
+}
+
+.filterOptions button {
+  font-size: 25px;
+  width: 170px;
+  height: 50px;
+  margin: 10px;
+  top: 25px;
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: orange;
+  font-weight: bolder;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(248, 142, 2, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(212, 103, 0);
+  color: white;
+}
+.filterOptions button:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: rgb(196, 152, 58);
+  color: white;
+  width: 220px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+  .filterOptions {
+    margin-top: -400px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .filterOptions {
+    margin-top: -350px;
+  }
+}
+@media (max-width: 825px) {
+  .filterOptions {
+    margin-top: -300px;
+  }
+}
+@media (max-width: 690px) {
+  .filterOptions {
+    margin-top: -250px;
+  }
+}
+@media (max-width: 568px) {
+  .filterOptions {
+    margin-top: -200px;
+  }
+}
+@media (max-width: 425px) {
+  .filterOptions {
+    margin-top: -150px;
+  }
+}

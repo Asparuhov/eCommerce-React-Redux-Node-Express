@@ -96,6 +96,7 @@ const mapStateToProps = (state) => {
     wishlist: state.currentWishList,
   };
 };
+//redux
 const toActions = (dispatch) => {
   return {
     setCurrentUser: (user) => dispatch(actions.setCurrentUser(user)),
