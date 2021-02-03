@@ -6,8 +6,8 @@ export const ADDTOCART = "ADDTOCART";
 export const INCREASECOUNT = "INCREASECOUNT";
 export const REMOVEITEM = "REMOVEITEM";
 export const SAVETODB = "SAVETODB";
-export const CLEARCART = "CLEARCART";
-export const TOTALCLEAR = "TOTALCLEAR";
+const CLEARCART = "CLEARCART";
+const TOTALCLEAR = "TOTALCLEAR";
 const TOWISH = "TOWISH";
 const REMOVEWISH = "REMOVEWISH";
 
