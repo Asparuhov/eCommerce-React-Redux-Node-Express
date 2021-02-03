@@ -8,8 +8,8 @@ export const REMOVEITEM = "REMOVEITEM";
 export const SAVETODB = "SAVETODB";
 export const CLEARCART = "CLEARCART";
 export const TOTALCLEAR = "TOTALCLEAR";
-export const TOWISH = "TOWISH";
-export const REMOVEWISH = "REMOVEWISH";
+const TOWISH = "TOWISH";
+const REMOVEWISH = "REMOVEWISH";
 
 //actionCreators
 export const addItem = (payload) => ({ type: ADDITEM, payload: payload });
